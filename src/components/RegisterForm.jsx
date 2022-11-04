@@ -11,16 +11,10 @@ export const RegisterForm = () => {
     
     
     function handleFormSubmit(e) {
-        console.log(usersStorage)
-        e.preventDefault();
-
-      
+        e.preventDefault();      
         usersStorage.push({ name, email, password });
-
-
         localStorage.setItem('users', JSON.stringify(usersStorage));
-
-        // resetForm();
+        resetForm();
     }
 
     function handleInputChange(e) {
@@ -39,9 +33,9 @@ export const RegisterForm = () => {
     }
 
     function resetForm() {
-        name = '';
-        email = '';
-        password = '';
+        setName('');
+        setEmail('');
+        setPassword('');
     }
 
     return (

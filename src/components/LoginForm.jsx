@@ -15,7 +15,7 @@ export const LoginForm = () => {
         JSON.parse(localStorage.getItem("users")).map(user => {
              if (user.email === email && user.password === password) {
                     console.log('Access');
-                    // resetForm();
+                    resetForm();
 
                 }
         })        
@@ -34,8 +34,9 @@ export const LoginForm = () => {
     }
 
     function resetForm() {
-        email = '';
-        password = '';
+        setName('');
+        setEmail('');
+        setPassword('');
     }
 
     return (
