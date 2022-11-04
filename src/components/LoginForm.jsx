@@ -12,14 +12,13 @@ export const LoginForm = () => {
     function handleFormSubmit(e) {
         e.preventDefault();
 
-            // usersStorage.map(user => {
-            //     if (user.email === email && user.password === password) {
-            //         console.log('Access');
-            //         resetForm();
+        JSON.parse(localStorage.getItem("users")).map(user => {
+             if (user.email === email && user.password === password) {
+                    console.log('Access');
+                    // resetForm();
 
-            //     }
-            // })
-        
+                }
+        })        
     }
 
     function handleInputChange(e) {

@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import { useState } from "react";
 import { Button } from "./Button";
 
-
+const usersStorage = JSON.parse(localStorage.getItem("users")) || [];
 
 export const RegisterForm = () => {
     const [name, setName] = useState('');
@@ -10,16 +10,15 @@ export const RegisterForm = () => {
     const [password, setPassword] = useState('');
     
     
-    // const user = [] ;
-
     function handleFormSubmit(e) {
+        console.log(usersStorage)
         e.preventDefault();
 
-        const user = {name, email, password}
-        // usersStorage.push({ name, email, password });
+      
+        usersStorage.push({ name, email, password });
 
 
-        localStorage.setItem('users', user )
+        localStorage.setItem('users', JSON.stringify(usersStorage));
 
         // resetForm();
     }
