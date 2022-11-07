@@ -1,20 +1,25 @@
 import { Link } from "react-router-dom";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { Button } from "./Button";
-
-const usersStorage = JSON.parse(localStorage.getItem("users")) || [];
+import { Message } from "./Message";
+import { usersStorage } from "./userStorage";
 
 export const RegisterForm = () => {
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
-    
+
+    const navigate = useNavigate();
     
     function handleFormSubmit(e) {
         e.preventDefault();      
-        usersStorage.push({ name, email, password });
-        localStorage.setItem('users', JSON.stringify(usersStorage));
-        resetForm();
+
+        if (!usersStorage.find(user => user.email === email)) {
+            usersStorage.push({ name, email, password });
+            localStorage.setItem('users', JSON.stringify(usersStorage));
+            navigate("../login");
+        }   
     }
 
     function handleInputChange(e) {
@@ -29,18 +34,14 @@ export const RegisterForm = () => {
             case "password":
                 setPassword(value);
                 break; 
+            default: return;
         }
-    }
-
-    function resetForm() {
-        setName('');
-        setEmail('');
-        setPassword('');
     }
 
     return (
         <>
             <Link to="/"><Button type="button" text="Back"/></Link>
+            <Message text="Please sing up" />
             <form onSubmit={handleFormSubmit}>
                 <label>Name
                     <input type="text" name="name" onChange={handleInputChange} required/>
@@ -51,7 +52,7 @@ export const RegisterForm = () => {
                 <label>Password
                     <input type="password" name="password" onChange={handleInputChange} required/>
                 </label>
-                <Button type="submit" text="Sign up"/>
+                <Button className='registerButton' type="submit" text="Sign up"/>
             </form>
         </>
     )

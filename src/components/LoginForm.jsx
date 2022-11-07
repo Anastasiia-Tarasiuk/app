@@ -1,23 +1,23 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { Button } from "./Button"
-// import { usersStorage } from "./RegisterForm";
+import { Message } from "./Message";
     
 export const LoginForm = () => {
 
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
 
+    const navigate = useNavigate();
 
     function handleFormSubmit(e) {
         e.preventDefault();
 
         JSON.parse(localStorage.getItem("users")).map(user => {
-             if (user.email === email && user.password === password) {
-                    console.log('Access');
-                    resetForm();
-
-                }
+            if (user.email === email && user.password === password) {
+                navigate("../main");
+            }              
         })        
     }
 
@@ -29,19 +29,15 @@ export const LoginForm = () => {
                 break;
             case "password":
                 setPassword(value);
-                break; 
+                break;
+            default: return;
         }
-    }
-
-    function resetForm() {
-        setName('');
-        setEmail('');
-        setPassword('');
     }
 
     return (
         <>
             <Link to="/"><Button type="button" text="Back"/></Link>
+            <Message text="Please sing in" />
             <form onSubmit={handleFormSubmit}>
                 <label>Email
                     <input type="email" name="email" onChange={handleInputChange} required/>
@@ -49,7 +45,7 @@ export const LoginForm = () => {
                 <label>Password
                     <input type="password" name="password" onChange={handleInputChange} required/>
                 </label>
-                <Button class='loginButton' type="submit" text="Sign in"/>
+                <Button className='loginButton' type="submit" text="Sign in"/>
             </form>
         </>
     )
