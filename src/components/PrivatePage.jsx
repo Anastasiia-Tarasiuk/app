@@ -1,6 +1,7 @@
 import { Message } from "./Message";
 import { ButtonComponent } from "./Button";
 import { useNavigate } from "react-router-dom";
+import { usersStorage } from "./userStorage";
 
 
 export const PrivatePage = () => {
@@ -10,6 +11,7 @@ export const PrivatePage = () => {
     function handleButtonClick() {
         navigate("../");
         localStorage.clear('users');
+        usersStorage.splice(0, usersStorage.length);
     }
 
     return (

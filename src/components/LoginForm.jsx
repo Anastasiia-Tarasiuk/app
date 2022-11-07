@@ -26,7 +26,6 @@ export const LoginForm = () => {
                 navigate("../main");
                 localStorage.clear('users');
                 usersStorage.splice(0, usersStorage.length);
-                console.log(usersStorage)
                 usersStorage.push(loggedUser);
                 localStorage.setItem('users', JSON.stringify(usersStorage));
             } else {
