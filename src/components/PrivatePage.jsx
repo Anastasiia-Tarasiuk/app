@@ -1,5 +1,5 @@
 import { Message } from "./Message";
-import { Button } from "./Button";
+import { ButtonComponent } from "./Button";
 import { useNavigate } from "react-router-dom";
 
 
@@ -14,7 +14,7 @@ export const PrivatePage = () => {
 
     return (
         <>
-            <Button className="logoutButton" type="button" text="Logout" onClick={handleButtonClick} />
+            <ButtonComponent className="logoutButton" type="button" text="Logout" onClick={handleButtonClick} />
             <Message text="Welcome to private page" />
         </>
     )

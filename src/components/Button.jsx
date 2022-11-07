@@ -1,6 +1,8 @@
-export const Button = ({ className, text, type, onClick }) => {
+import Button from 'react-bootstrap/Button';
+
+export const ButtonComponent = ({ className, text, type, onClick }) => {
 
     return (
-        <button className={className} type={type} onClick={onClick}>{text}</button>
+        <Button variant="warning" size="sm" className={className} type={type} onClick={onClick}>{text}</Button>
     )
 }

@@ -1,9 +1,11 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
-import { Button } from "./Button"
+import { ButtonComponent } from "./Button"
 import { Message } from "./Message";
 import { usersStorage } from "./userStorage";
+import { FormInput } from "./FormInput";
+import Notiflix from "notiflix";
     
 export const LoginForm = () => {
 
@@ -22,15 +24,17 @@ export const LoginForm = () => {
                 const name = user.name;
                 loggedUser = { name, email, password, isLoggedIn: true };
                 navigate("../main");
-            }              
+                localStorage.clear('users');
+                usersStorage.splice(0, usersStorage.length);
+                console.log(usersStorage)
+                usersStorage.push(loggedUser);
+                localStorage.setItem('users', JSON.stringify(usersStorage));
+            } else {
+                Notiflix.Notify.failure('Email or password is wrong');
+            }   
+            
         })       
         
-        localStorage.clear('users');
-        usersStorage.splice(0, usersStorage.length);
-        console.log(usersStorage)
-        usersStorage.push(loggedUser);
-        localStorage.setItem('users', JSON.stringify(usersStorage));
-
     }
 
     function handleInputChange(e) {
@@ -48,16 +52,12 @@ export const LoginForm = () => {
 
     return (
         <>
-            <Link to="/"><Button type="button" text="Back"/></Link>
+            <Link to="/"><ButtonComponent type="button" text="Back"/></Link>
             <Message text="Please sing in" />
             <form onSubmit={handleFormSubmit}>
-                <label>Email
-                    <input type="email" name="email" onChange={handleInputChange} required/>
-                </label>
-                <label>Password
-                    <input type="password" name="password" onChange={handleInputChange} required/>
-                </label>
-                <Button className='loginButton' type="submit" text="Sign in"/>
+                <FormInput labelText="Email" inputType="email" inputName="email" onChange={handleInputChange} controlId="emailId" />
+                <FormInput labelText="Password" inputType="password" inputName="password"  onChange={handleInputChange} controlId="passwordId"/>
+                <ButtonComponent className="singInButton" type="submit" text="Sign in"/>
             </form>
         </>
     )
