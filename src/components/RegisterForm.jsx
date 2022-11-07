@@ -1,9 +1,11 @@
 import { Link } from "react-router-dom";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+
 import { Button } from "./Button";
 import { Message } from "./Message";
 import { usersStorage } from "./userStorage";
+// import toast from "react-hot-toast";
 
 export const RegisterForm = () => {
     const [name, setName] = useState('');
@@ -16,9 +18,10 @@ export const RegisterForm = () => {
         e.preventDefault();      
 
         if (!usersStorage.find(user => user.email === email)) {
-            usersStorage.push({ name, email, password });
+            usersStorage.push({ name, email, password, isLoggedIn: false });
             localStorage.setItem('users', JSON.stringify(usersStorage));
             navigate("../login");
+            // toast("Hello World")
         }   
     }
 

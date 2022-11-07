@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import { Button } from "./Button"
 import { Message } from "./Message";
+import { usersStorage } from "./userStorage";
     
 export const LoginForm = () => {
 
@@ -14,11 +15,22 @@ export const LoginForm = () => {
     function handleFormSubmit(e) {
         e.preventDefault();
 
+        let loggedUser = {};
+
         JSON.parse(localStorage.getItem("users")).map(user => {
             if (user.email === email && user.password === password) {
+                const name = user.name;
+                loggedUser = { name, email, password, isLoggedIn: true };
                 navigate("../main");
             }              
-        })        
+        })       
+        
+        localStorage.clear('users');
+        usersStorage.splice(0, usersStorage.length);
+        console.log(usersStorage)
+        usersStorage.push(loggedUser);
+        localStorage.setItem('users', JSON.stringify(usersStorage));
+
     }
 
     function handleInputChange(e) {
