@@ -3,12 +3,10 @@ import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import { ButtonComponent } from "./Button"
 import { Message } from "./Message";
-import { usersStorage } from "./userStorage";
 import { FormInput } from "./FormInput";
 import Notiflix from "notiflix";
     
 export const LoginForm = () => {
-
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
 
@@ -16,24 +14,24 @@ export const LoginForm = () => {
 
     function handleFormSubmit(e) {
         e.preventDefault();
-
-        let loggedUser = {};
-
-        JSON.parse(localStorage.getItem("users")).map(user => {
+        let loggedInUser = null;
+        const savedUsers =  JSON.parse(localStorage.getItem('users'));
+        savedUsers.map(user => {
             if (user.email === email && user.password === password) {
-                const name = user.name;
-                loggedUser = { name, email, password, isLoggedIn: true };
-                navigate("../main");
-                localStorage.clear('users');
-                usersStorage.splice(0, usersStorage.length);
-                usersStorage.push(loggedUser);
-                localStorage.setItem('users', JSON.stringify(usersStorage));
-            } else {
-                Notiflix.Notify.failure('Email or password is wrong');
-            }   
-            
-        })       
+                loggedInUser = user;               
+            }
+        });
         
+        if (loggedInUser) {
+            userLogin(loggedInUser)
+        }  else {
+            Notiflix.Notify.failure('Email or password is wrong');
+        }           
+    }
+
+    function userLogin(loggedInUser) {
+        localStorage.setItem('loggedInUser', JSON.stringify(loggedInUser));
+        navigate("../main");
     }
 
     function handleInputChange(e) {

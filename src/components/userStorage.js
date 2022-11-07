@@ -1,1 +1,0 @@
-export const usersStorage = JSON.parse(localStorage.getItem("users")) || [];

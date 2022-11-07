@@ -4,26 +4,27 @@ import { useNavigate } from "react-router-dom";
 import { FormInput } from "./FormInput";
 import { ButtonComponent } from "./Button";
 import { Message } from "./Message";
-import { usersStorage } from "./userStorage";
 import Notiflix from "notiflix";
 
 export const RegisterForm = () => {
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
-    console.log(usersStorage)
 
     const navigate = useNavigate();
 
     function handleFormSubmit(e) {
-        e.preventDefault();      
-        const user = usersStorage.find(user => user.email === email);
+        e.preventDefault();
+        const savedUser = JSON.parse(localStorage.getItem('users')) || [];
 
-        if (user && user?.email === email) {
+            
+        const existedUser = savedUser.find(user => user.email === email);
+
+        if (existedUser && existedUser?.email === email) {
             Notiflix.Notify.failure('User exists');
         } else {
-            usersStorage.push({ name, email, password, isLoggedIn: false });
-            localStorage.setItem('users', JSON.stringify(usersStorage));
+            savedUser.push({ name, email, password});
+            localStorage.setItem('users', JSON.stringify(savedUser));
             navigate("../login");
         }   
     }
