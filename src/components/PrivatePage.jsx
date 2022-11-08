@@ -1,6 +1,6 @@
+import { useNavigate } from "react-router-dom";
 import { Message } from "./Message";
 import { ButtonComponent } from "./Button";
-import { useNavigate } from "react-router-dom";
 
 export const PrivatePage = () => {
     const navigate = useNavigate();

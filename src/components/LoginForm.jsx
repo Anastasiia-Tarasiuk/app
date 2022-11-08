@@ -1,10 +1,10 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
+import Notiflix from "notiflix";
 import { ButtonComponent } from "./Button"
 import { Message } from "./Message";
 import { FormInput } from "./FormInput";
-import Notiflix from "notiflix";
     
 export const LoginForm = () => {
     const [email, setEmail] = useState('');

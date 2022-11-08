@@ -1,5 +1,5 @@
-import { ButtonComponent } from "./Button";
 import { Link } from "react-router-dom";
+import { ButtonComponent } from "./Button";
 
 export const AppBar = () => {
     return (

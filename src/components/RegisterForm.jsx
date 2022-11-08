@@ -15,9 +15,8 @@ export const RegisterForm = () => {
 
     function handleFormSubmit(e) {
         e.preventDefault();
+        
         const savedUser = JSON.parse(localStorage.getItem('users')) || [];
-
-            
         const existedUser = savedUser.find(user => user.email === email);
 
         if (existedUser && existedUser?.email === email) {
