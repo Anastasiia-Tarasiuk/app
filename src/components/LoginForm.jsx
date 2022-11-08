@@ -11,6 +11,7 @@ export const LoginForm = () => {
     const [password, setPassword] = useState('');
 
     const navigate = useNavigate();
+    window.history.forward();
 
     function handleFormSubmit(e) {
         e.preventDefault();
@@ -18,7 +19,7 @@ export const LoginForm = () => {
         const savedUsers =  JSON.parse(localStorage.getItem('users'));
         savedUsers.map(user => {
             if (user.email === email && user.password === password) {
-                loggedInUser = user;               
+               loggedInUser = user;               
             }
         });
         

@@ -24,8 +24,7 @@ code {
   font-weight: bold;
 }
 
-nav,
-.logoutButton {
+nav {
   display: flex;
   justify-content: right;
 }
@@ -36,7 +35,9 @@ form {
   margin: 0 auto;
 }
 
-.singInButton, 
-.singupButton {
+.singUpButton,
+.singInButton {
+  width: 70px;
+  display: block;
   margin: 0 auto;
 }

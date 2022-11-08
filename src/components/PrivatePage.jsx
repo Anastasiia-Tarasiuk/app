@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 
 export const PrivatePage = () => {
     const navigate = useNavigate();
-
+    
     function handleButtonClick() {
         navigate("../");
         localStorage.removeItem('loggedInUser');
