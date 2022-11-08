@@ -29,15 +29,10 @@ nav {
   justify-content: right;
 }
 
-form {
-  width: 200px;
-  display: block;
-  margin: 0 auto;
-}
-
+form,
 .singUpButton,
 .singInButton {
-  width: 70px;
+  width: 200px;
   display: block;
   margin: 0 auto;
 }
