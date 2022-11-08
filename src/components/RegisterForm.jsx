@@ -28,30 +28,14 @@ export const RegisterForm = () => {
         }   
     }
 
-    function handleInputChange(e) {
-        const value = e.currentTarget.value;
-        switch (e.currentTarget.name) {
-            case "name":
-                setName(value);
-                break;
-            case "email":
-                setEmail(value);
-                break;
-            case "password":
-                setPassword(value);
-                break; 
-            default: return;
-        }
-    }
-
     return (
         <>
             <Link to="/"><ButtonComponent type="button" text="Back"/></Link>
             <Message text="Please sing up" />
             <form onSubmit={handleFormSubmit}>
-                <FormInput labelText="Name" inputType="text" inputName="name" onChange={handleInputChange} controlId="nameId"/>
-                <FormInput labelText="Email" inputType="email" inputName="email" onChange={handleInputChange} controlId="emailId"/>
-                <FormInput labelText="Password" inputType="password" inputName="password" onChange={handleInputChange} controlId="passwordlId"/>
+                <FormInput labelText="Name" inputType="text" inputName="name" onChange={value => setName(value)} controlId="nameId"/>
+                <FormInput labelText="Email" inputType="email" inputName="email" onChange={value => setEmail(value)} controlId="emailId"/>
+                <FormInput labelText="Password" inputType="password" inputName="password" onChange={value => setPassword(value)} controlId="passwordlId"/>
                 <ButtonComponent className='singUpButton' type="submit" text="Sign up"/>
             </form>
         </>

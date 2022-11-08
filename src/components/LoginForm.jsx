@@ -35,26 +35,13 @@ export const LoginForm = () => {
         navigate("../main");
     }
 
-    function handleInputChange(e) {
-        const value = e.currentTarget.value;
-        switch (e.currentTarget.name) {
-            case "email":
-                setEmail(value);
-                break;
-            case "password":
-                setPassword(value);
-                break;
-            default: return;
-        }
-    }
-
     return (
         <>
             <Link to="/"><ButtonComponent type="button" text="Back"/></Link>
             <Message text="Please sing in" />
             <form onSubmit={handleFormSubmit}>
-                <FormInput labelText="Email" inputType="email" inputName="email" onChange={handleInputChange} controlId="emailId" />
-                <FormInput labelText="Password" inputType="password" inputName="password"  onChange={handleInputChange} controlId="passwordId"/>
+                <FormInput labelText="Email" inputType="email" inputName="email" onChange={value => setEmail(value)} controlId="emailId" />
+                <FormInput labelText="Password" inputType="password" inputName="password"  onChange={value => setPassword(value)} controlId="passwordId"/>
                 <ButtonComponent className="singInButton" type="submit" text="Sign in"/>
             </form>
         </>
