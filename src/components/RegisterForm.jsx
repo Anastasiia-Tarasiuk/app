@@ -1,29 +1,32 @@
 import { Link } from "react-router-dom";
-import { useState } from "react";
+import { useState} from "react";
 import { useNavigate } from "react-router-dom";
 import { FormInput } from "./FormInput";
 import { ButtonComponent } from "./Button";
 import { Message } from "./Message";
 import Notiflix from "notiflix";
+import { useDispatch, useSelector } from "react-redux";
+import { addUser } from '../redux/slice/userSlice';
 
 export const RegisterForm = () => {
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
 
+    const registeredUser = useSelector((state) => state.users.allUsers);
+    const dispatch = useDispatch();
+
     const navigate = useNavigate();
 
     function handleFormSubmit(e) {
         e.preventDefault();
         
-        const savedUser = JSON.parse(localStorage.getItem('users')) || [];
-        const existedUser = savedUser.find(user => user.email === email);
+        const existedUser = registeredUser.find(user => user.email === email);
 
         if (existedUser && existedUser?.email === email) {
             Notiflix.Notify.failure('User exists');
         } else {
-            savedUser.push({ name, email, password});
-            localStorage.setItem('users', JSON.stringify(savedUser));
+            dispatch(addUser({ name, email, password }));
             navigate("../login");
         }   
     }

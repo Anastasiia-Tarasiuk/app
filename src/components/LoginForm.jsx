@@ -5,10 +5,15 @@ import Notiflix from "notiflix";
 import { ButtonComponent } from "./Button"
 import { Message } from "./Message";
 import { FormInput } from "./FormInput";
+import { useDispatch, useSelector } from "react-redux";
+import { setLoggedInUser } from '../redux/slice/userSlice';
     
 export const LoginForm = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+
+    const registeredUser = useSelector((state) => state.users.allUsers);
+    const dispatch = useDispatch();
 
     const navigate = useNavigate();
     window.history.forward();
@@ -16,10 +21,10 @@ export const LoginForm = () => {
     function handleFormSubmit(e) {
         e.preventDefault();
         let loggedInUser = null;
-        const savedUsers =  JSON.parse(localStorage.getItem('users'));
-        savedUsers.map(user => {
+
+        registeredUser.forEach(user => {
             if (user.email === email && user.password === password) {
-               loggedInUser = user;               
+                loggedInUser = user; 
             }
         });
         
@@ -31,7 +36,7 @@ export const LoginForm = () => {
     }
 
     function userLogin(loggedInUser) {
-        localStorage.setItem('loggedInUser', JSON.stringify(loggedInUser));
+        dispatch(setLoggedInUser( loggedInUser ));
         navigate("../main");
     }
 
