@@ -6,7 +6,7 @@ import { ButtonComponent } from "./Button"
 import { Message } from "./Message";
 import { FormInput } from "./FormInput";
 import { useDispatch, useSelector } from "react-redux";
-import { setLoggedInUser } from '../redux/slice/userSlice';
+import { toggleLoggedInUser } from '../redux/slice/userSlice';
     
 export const LoginForm = () => {
     const [email, setEmail] = useState('');
@@ -36,7 +36,7 @@ export const LoginForm = () => {
     }
 
     function userLogin(loggedInUser) {
-        dispatch(setLoggedInUser( loggedInUser ));
+        dispatch(toggleLoggedInUser( loggedInUser ));
         navigate("../main");
     }
 

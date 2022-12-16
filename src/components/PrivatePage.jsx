@@ -2,7 +2,7 @@ import { useNavigate } from "react-router-dom";
 import { Message } from "./Message";
 import { ButtonComponent } from "./Button";
 import { useDispatch } from "react-redux";
-import { removeLoggedInUser } from '../redux/slice/userSlice';
+import { toggleLoggedInUser } from '../redux/slice/userSlice';
 
 export const PrivatePage = () => {
     const navigate = useNavigate();
@@ -10,8 +10,7 @@ export const PrivatePage = () => {
     
     function handleButtonClick() {
         navigate("../");
-        dispatch(removeLoggedInUser( removeLoggedInUser ));
-        localStorage.removeItem('loggedInUser');
+        dispatch(toggleLoggedInUser( {} ));
     }
 
     return (

@@ -12,15 +12,12 @@ export const userSlice = createSlice({
         addUser: (state, action) => {
             state.allUsers.push(action.payload);
         },
-        setLoggedInUser: (state, action) => {
+        toggleLoggedInUser: (state, action) => {
             state.loggedInUser = action.payload;
         },
-        removeLoggedInUser: (state) => {
-            state.loggedInUser = {};
-        }
     },
 })
 
-export const { addUser, setLoggedInUser, removeLoggedInUser} = userSlice.actions;
+export const { addUser, toggleLoggedInUser} = userSlice.actions;
 
 export default userSlice.reducer;
