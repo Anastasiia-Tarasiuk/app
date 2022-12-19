@@ -7,6 +7,7 @@ import { Message } from "./Message";
 import { FormInput } from "./FormInput";
 import { useDispatch, useSelector } from "react-redux";
 import { toggleLoggedInUser } from '../redux/slice/userSlice';
+import bcrypt from 'bcryptjs';
     
 export const LoginForm = () => {
     const [email, setEmail] = useState('');
@@ -20,19 +21,18 @@ export const LoginForm = () => {
 
     function handleFormSubmit(e) {
         e.preventDefault();
-        let loggedInUser = null;
 
         registeredUser.forEach(user => {
-            if (user.email === email && user.password === password) {
-                loggedInUser = user; 
+            if (user.email === email) {
+                const isValidPassword = bcrypt.compareSync(password, user.password);
+
+                if (isValidPassword) {
+                    userLogin(user)
+                } else {
+                    Notiflix.Notify.failure('Email or password is wrong');
+                }
             }
         });
-        
-        if (loggedInUser) {
-            userLogin(loggedInUser)
-        }  else {
-            Notiflix.Notify.failure('Email or password is wrong');
-        }           
     }
 
     function userLogin(loggedInUser) {

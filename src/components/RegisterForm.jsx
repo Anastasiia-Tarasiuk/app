@@ -7,6 +7,7 @@ import { Message } from "./Message";
 import Notiflix from "notiflix";
 import { useDispatch, useSelector } from "react-redux";
 import { addUser } from '../redux/slice/userSlice';
+import bcrypt from 'bcryptjs';
 
 export const RegisterForm = () => {
     const [name, setName] = useState('');
@@ -20,13 +21,14 @@ export const RegisterForm = () => {
 
     function handleFormSubmit(e) {
         e.preventDefault();
-        
+
         const existedUser = registeredUser.find(user => user.email === email);
 
         if (existedUser && existedUser?.email === email) {
             Notiflix.Notify.failure('User exists');
         } else {
-            dispatch(addUser({ name, email, password }));
+            const hashedPassword = bcrypt.hashSync(password, bcrypt.genSaltSync(6));
+            dispatch(addUser({ name, email, password: hashedPassword }));
             navigate("../login");
         }   
     }
@@ -38,7 +40,7 @@ export const RegisterForm = () => {
             <form onSubmit={handleFormSubmit}>
                 <FormInput labelText="Name" inputType="text" inputName="name" onChange={value => setName(value)} controlId="nameId"/>
                 <FormInput labelText="Email" inputType="email" inputName="email" onChange={value => setEmail(value)} controlId="emailId"/>
-                <FormInput labelText="Password" inputType="password" inputName="password" onChange={value => setPassword(value)} controlId="passwordlId"/>
+                <FormInput labelText="Password" inputType="password" inputName="password" onChange={value => setPassword(value)} controlId="passwordId"/>
                 <ButtonComponent className='singUpButton' type="submit" text="Sign up"/>
             </form>
         </>
