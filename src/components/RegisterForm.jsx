@@ -25,6 +25,7 @@ export const RegisterForm = () => {
         e.preventDefault();
 
         if (passwordCheck !== password) {
+            Notiflix.Notify.failure('Password doesn\'t match' );
             return;
         }
 

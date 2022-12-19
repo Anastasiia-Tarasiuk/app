@@ -22,17 +22,19 @@ export const LoginForm = () => {
     function handleFormSubmit(e) {
         e.preventDefault();
 
-        registeredUsers.forEach(user => {
-            if (user.email === email) {
-                const isValidPassword = bcrypt.compareSync(password, user.password);
+        const currentUser = registeredUsers.find(user => user.email === email.trim());
 
-                if (isValidPassword) {
-                    userLogin(user)
-                } else {
-                    Notiflix.Notify.failure('Email or password is wrong');
-                }
+        if (!!currentUser) {
+            const isValidPassword = bcrypt.compareSync(password, currentUser.password);
+
+            if (isValidPassword) {
+                userLogin(currentUser)
+            } else {
+                Notiflix.Notify.failure('Email or password is wrong');
             }
-        });
+        } else {
+            Notiflix.Notify.failure('Email or password is wrong');
+        }
     }
 
     function userLogin(loggedInUser) {
