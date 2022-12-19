@@ -8,21 +8,21 @@ import { FormInput } from "./FormInput";
 import { useDispatch, useSelector } from "react-redux";
 import { toggleLoggedInUser } from '../redux/slice/userSlice';
 import bcrypt from 'bcryptjs';
-    
+
 export const LoginForm = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
 
-    const registeredUser = useSelector((state) => state.users.allUsers);
+    const registeredUsers = useSelector((state) => state.users.allUsers);
     const dispatch = useDispatch();
-
     const navigate = useNavigate();
+
     window.history.forward();
 
     function handleFormSubmit(e) {
         e.preventDefault();
 
-        registeredUser.forEach(user => {
+        registeredUsers.forEach(user => {
             if (user.email === email) {
                 const isValidPassword = bcrypt.compareSync(password, user.password);
 

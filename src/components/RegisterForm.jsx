@@ -9,28 +9,35 @@ import { useDispatch, useSelector } from "react-redux";
 import { addUser } from '../redux/slice/userSlice';
 import bcrypt from 'bcryptjs';
 
+let passwordCheck = null;
+
 export const RegisterForm = () => {
+
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
 
-    const registeredUser = useSelector((state) => state.users.allUsers);
+    const registeredUsers = useSelector((state) => state.users.allUsers);
     const dispatch = useDispatch();
-
     const navigate = useNavigate();
 
     function handleFormSubmit(e) {
         e.preventDefault();
 
-        const existedUser = registeredUser.find(user => user.email === email);
+        if (passwordCheck !== password) {
+            return;
+        }
 
-        if (existedUser && existedUser?.email === email) {
+        const existedUser = registeredUsers.find(user => user.email === email.trim());
+
+        if (existedUser) {
             Notiflix.Notify.failure('User exists');
         } else {
             const hashedPassword = bcrypt.hashSync(password, bcrypt.genSaltSync(6));
-            dispatch(addUser({ name, email, password: hashedPassword }));
+            const id = Math.random().toString(36).slice(-6);
+            dispatch(addUser({ id, name, email: email.trim(), password: hashedPassword }));
             navigate("../login");
-        }   
+        }
     }
 
     return (
@@ -41,6 +48,7 @@ export const RegisterForm = () => {
                 <FormInput labelText="Name" inputType="text" inputName="name" onChange={value => setName(value)} controlId="nameId"/>
                 <FormInput labelText="Email" inputType="email" inputName="email" onChange={value => setEmail(value)} controlId="emailId"/>
                 <FormInput labelText="Password" inputType="password" inputName="password" onChange={value => setPassword(value)} controlId="passwordId"/>
+                <FormInput labelText="Repeat password" inputType="password" inputName="passwordCheck" onChange={value => passwordCheck = value} controlId="passwordCheckId"/>
                 <ButtonComponent className='singUpButton' type="submit" text="Sign up"/>
             </form>
         </>
