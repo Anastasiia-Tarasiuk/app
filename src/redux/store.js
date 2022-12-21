@@ -1,5 +1,5 @@
-// import { configureStore } from '@reduxjs/toolkit';
 import userSlice from '../redux/slice/userSlice';
+import videoSlice from "./slice/videoSlice";
 import { combineReducers,  configureStore, getDefaultMiddleware } from '@reduxjs/toolkit';
 import { persistReducer, persistStore, FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER } from 'reduxjs-toolkit-persist';
 import autoMergeLevel1 from 'reduxjs-toolkit-persist/lib/stateReconciler/autoMergeLevel1';
@@ -12,7 +12,8 @@ const persistConfig = {
 };
 
 const reducers = combineReducers({
-  users: userSlice
+    users: userSlice,
+    videos: videoSlice
 });
 
 const _persistedReducer = persistReducer(persistConfig, reducers);

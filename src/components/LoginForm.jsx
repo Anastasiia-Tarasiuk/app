@@ -28,7 +28,7 @@ export const LoginForm = () => {
             const isValidPassword = bcrypt.compareSync(password, currentUser.password);
 
             if (isValidPassword) {
-                userLogin(currentUser)
+                userLogin(currentUser);
             } else {
                 Notiflix.Notify.failure('Email or password is wrong');
             }

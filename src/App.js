@@ -6,9 +6,10 @@ import { PublicPage } from './components/PublicPage';
 import { PrivatePage } from './components/PrivatePage';
 import { NotFound } from './components/NotFound';
 import PrivateRoute from './components/PrivateRoute';
+import {AppWrapper} from "./App.styled";
 
 function App() {
-  return <>
+   return <AppWrapper>
     <Routes>
       <Route path="/" element={<PublicPage />} />
       <Route path="login" element={<LoginForm />} />
@@ -19,7 +20,7 @@ function App() {
         </PrivateRoute>} />
       <Route path="*" element={<NotFound />} />      
     </Routes>
-    </>
+    </AppWrapper>
 }
 
 export default App;
