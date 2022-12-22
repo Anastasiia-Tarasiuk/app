@@ -9,12 +9,12 @@ export const Overlay = styled.div`
   overflow-y: scroll;
   background-color: rgba(17, 17, 17, 0.6);
   backdrop-filter: blur(10px);
-  z-index: 1;
+  z-index: 2;
 `
 
 
 export const Modal = styled.div`
-  z-index: 2;
+  z-index: 3;
   position: absolute;
   top: 50%; 
   left: 50%; 

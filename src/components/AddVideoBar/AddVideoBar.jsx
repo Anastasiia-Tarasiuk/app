@@ -1,6 +1,6 @@
 import {FormInput} from "../FormInput";
 import {ButtonComponent} from "../Button";
-import {useRef, useState} from "react";
+import {useState} from "react";
 import {VideoBarWrapper} from "./AddVideoBar.styled";
 import {useDispatch, useSelector} from "react-redux";
 import {addVideo} from "../../redux/slice/videoSlice";
@@ -15,8 +15,7 @@ export const AddVideoBar = () => {
     const videoId = videoName;
 
     function handleButtonClick(){
-
-        dispatch(addVideo({loggedInUserId, videoName, videoLink, videoId}))
+        dispatch(addVideo({loggedInUserId, videoName, videoLink, videoId}));
     }
 
     return (

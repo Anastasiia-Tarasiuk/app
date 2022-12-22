@@ -1,6 +1,6 @@
 import {ButtonComponent} from "../Button";
 import {useDispatch, useSelector} from "react-redux";
-import {playCurrentVideo, editVideo} from "../../redux/slice/videoSlice";
+import {getCurrentVideo} from "../../redux/slice/videoSlice";
 import {EditVideoItemModal} from "../EditVideoItemModal/EditVideoItemModal";
 import {useState} from "react";
 
@@ -9,16 +9,14 @@ export const VideoItem = ({name, link, id}) => {
     const [showModal, setShowModal] = useState(false);
 
     const dispatch = useDispatch();
-    const currentVideoLink = useSelector((state) => state.videos.currentVideo);
+    const currentVideo = useSelector((state) => state.videos.currentVideo)
+    const currentVideoLink = currentVideo.videoLink;
+    console.log(currentVideoLink)
 
     function handlePlayButtonClick() {
         if (currentVideoLink !==link) {
-            dispatch(playCurrentVideo(link));
+            dispatch(getCurrentVideo({videoLink: link, videoName: name, videoId: id}));
         }
-    }
-
-    function handleDeleteButtonClick() {
-
     }
 
     return <>
@@ -26,9 +24,9 @@ export const VideoItem = ({name, link, id}) => {
             {name}
         </li>
         <ButtonComponent className="play" type="button" text="Play" onClick={handlePlayButtonClick}/>
-        <ButtonComponent className="rename" type="button" text="Rename" onClick={() => setShowModal(!showModal)}/>
-        <EditVideoItemModal shown={showModal} close={() => setShowModal(!showModal)}/>
-        <ButtonComponent className="delete" type="button" text="Delete" onClick={handleDeleteButtonClick}/>
+        <ButtonComponent className="edit" type="button" text="Edit" onClick={() => setShowModal(!showModal)}/>
+        <EditVideoItemModal link={link} id={id} name={name} shown={showModal} close={() => setShowModal(!showModal)}/>
+
     </>
 
 }
