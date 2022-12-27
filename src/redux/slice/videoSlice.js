@@ -25,14 +25,9 @@ export const videoSlice = createSlice({
         deleteVideo: (state, action) => {
             const index = state.allVideos.findIndex(video => video.videoId === action.payload.id);
             state.allVideos.splice(index, 1);
-
             if (state.currentVideo.videoId === action.payload.id) {
                 state.currentVideo = {};
             }
-
-
-
-            // state.allVideos = state.allVideos.find(video => video.videoId !== action.payload.id);
         }
     },
 })

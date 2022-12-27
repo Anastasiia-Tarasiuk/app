@@ -1,9 +1,8 @@
 import {FormInput} from "../FormInput";
-import {ButtonComponent} from "../Button";
 import {useState} from "react";
-import {VideoBarWrapper} from "./AddVideoBar.styled";
 import {useDispatch, useSelector} from "react-redux";
 import {addVideo} from "../../redux/slice/videoSlice";
+import {AddVideoForm, AddVideoButton} from "./AddVideoBar.styled";
 
 export const AddVideoBar = () => {
     const [videoLink, setVideoLink] = useState('');
@@ -15,13 +14,20 @@ export const AddVideoBar = () => {
     const videoId = videoName;
 
     function handleButtonClick(){
-        dispatch(addVideo({loggedInUserId, videoName, videoLink, videoId}));
+        if (videoLink !== '') {
+            dispatch(addVideo({loggedInUserId, videoName, videoLink, videoId}));
+        }
+    }
+
+    function handleFormSubmit(e){
+        e.preventDefault();
+        e.currentTarget.elements[0].value = '';
     }
 
     return (
-        <VideoBarWrapper>
+        <AddVideoForm onSubmit={handleFormSubmit}>
             <FormInput labelText="Set the link here" inputType="text" inputName="videoLink" onChange={value => setVideoLink(value)} />
-            <ButtonComponent className="AddVideoButton" type="button" text="Add" onClick={handleButtonClick}/>
-        </VideoBarWrapper>
+            <AddVideoButton className="AddVideoButton" type="submit" text="Add" onClick={e => handleButtonClick(e)}/>
+        </AddVideoForm>
     )
 }

@@ -24,7 +24,6 @@ export const VideoList = () => {
                 </ul>
                 : <Message text={'Your playlist is empty. Add some links'}/>
         }
-
     </>
 
 }

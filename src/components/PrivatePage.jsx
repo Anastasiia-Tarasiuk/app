@@ -8,7 +8,6 @@ import {AddVideoBar} from "./AddVideoBar/AddVideoBar";
 import {Player} from "./Player/Player";
 import {getCurrentVideo} from "../redux/slice/videoSlice";
 
-
 export const PrivatePage = () => {
     const navigate = useNavigate();
     const dispatch = useDispatch();
@@ -28,7 +27,6 @@ export const PrivatePage = () => {
             <Message text= {"Welcome to your playlist, " + loggedInUserName}/>
             <Sidebar/>
             <AddVideoBar/>
-
             <Player src={currentVideoLink} name={currentVideoName}/>
         </>
     )

@@ -3,7 +3,7 @@ import {useDispatch, useSelector} from "react-redux";
 import {getCurrentVideo} from "../../redux/slice/videoSlice";
 import {EditVideoItemModal} from "../EditVideoItemModal/EditVideoItemModal";
 import {useState} from "react";
-
+import {Item, VideoItemButton} from "./VideoItem.styled";
 
 export const VideoItem = ({name, link, id}) => {
     const [showModal, setShowModal] = useState(false);
@@ -11,7 +11,6 @@ export const VideoItem = ({name, link, id}) => {
     const dispatch = useDispatch();
     const currentVideo = useSelector((state) => state.videos.currentVideo)
     const currentVideoLink = currentVideo.videoLink;
-    console.log(currentVideoLink)
 
     function handlePlayButtonClick() {
         if (currentVideoLink !==link) {
@@ -20,13 +19,12 @@ export const VideoItem = ({name, link, id}) => {
     }
 
     return <>
-        <li>
+        <Item>
             {name}
-        </li>
+        </Item>
         <ButtonComponent className="play" type="button" text="Play" onClick={handlePlayButtonClick}/>
-        <ButtonComponent className="edit" type="button" text="Edit" onClick={() => setShowModal(!showModal)}/>
+        <VideoItemButton className="edit" type="button" text="Edit" onClick={() => setShowModal(!showModal)}/>
         <EditVideoItemModal link={link} id={id} name={name} shown={showModal} close={() => setShowModal(!showModal)}/>
-
     </>
 
 }

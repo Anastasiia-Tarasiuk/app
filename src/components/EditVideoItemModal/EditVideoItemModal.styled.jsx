@@ -1,4 +1,5 @@
 import styled from "@emotion/styled";
+import {ButtonComponent} from "../Button";
 
 export const Overlay = styled.div`
   position: fixed;
@@ -12,7 +13,6 @@ export const Overlay = styled.div`
   z-index: 2;
 `
 
-
 export const Modal = styled.div`
   z-index: 3;
   position: absolute;
@@ -21,4 +21,15 @@ export const Modal = styled.div`
   transform: translate(-50%, -50%);
   padding: 200px;
   background-color: gray;  
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`
+
+export const DeleteButton = styled(ButtonComponent)`
+  margin-left: 20px;
+`
+
+export const CancelButton = styled(ButtonComponent)`
+  margin-left: 20px;
 `
