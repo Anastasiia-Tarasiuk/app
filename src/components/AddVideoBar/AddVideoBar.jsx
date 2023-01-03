@@ -3,6 +3,7 @@ import {useState} from "react";
 import {useDispatch, useSelector} from "react-redux";
 import {addVideo} from "../../redux/slice/videoSlice";
 import {AddVideoForm, AddVideoButton} from "./AddVideoBar.styled";
+import Notiflix from "notiflix";
 
 export const AddVideoBar = () => {
     const [videoLink, setVideoLink] = useState('');
@@ -15,6 +16,7 @@ export const AddVideoBar = () => {
 
     function handleButtonClick(){
         if (videoLink !== '') {
+            Notiflix.Notify.success('Video was added successfully');
             dispatch(addVideo({loggedInUserId, videoName, videoLink, videoId}));
         }
     }
