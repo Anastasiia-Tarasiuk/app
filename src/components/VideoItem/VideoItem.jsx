@@ -3,7 +3,7 @@ import {useDispatch, useSelector} from "react-redux";
 import {getCurrentVideo} from "../../redux/slice/videoSlice";
 import {ModalOverlay} from "../ModalOverlay/ModalOverlay";
 import {useState} from "react";
-import {Item, VideoItemButton} from "./VideoItem.styled";
+import {VideoItemButton} from "./VideoItem.styled";
 import {EditVideoModalContent} from "../EditVideoModalContent/EditVideoModalContent";
 
 export const VideoItem = ({name, link, id}) => {
@@ -20,9 +20,9 @@ export const VideoItem = ({name, link, id}) => {
     }
 
     return <>
-        <Item>
+        <li>
             {name}
-        </Item>
+        </li>
         <ButtonComponent className="play" type="button" text="Play" onClick={handlePlayButtonClick}/>
         <VideoItemButton className="edit" type="button" text="Edit" onClick={() => setShowModal(!showModal)}/>
         <ModalOverlay shown={showModal} close={() => setShowModal(!showModal)} content={<EditVideoModalContent name={name} link={link} id={id} close={() => setShowModal(!showModal)} />}/>

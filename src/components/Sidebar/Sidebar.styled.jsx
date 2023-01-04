@@ -22,5 +22,5 @@ export const Icon = styled.svg`
   width: 25px;
   fill: #ffc107;
   transform: rotate(180deg);
-  
+  padding: 0;
 `

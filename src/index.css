@@ -38,3 +38,11 @@ form,
   display: block;
   margin: 0 auto;
 }
+
+li {
+  list-style-type: none;
+}
+
+ul {
+  padding: 0;
+}
