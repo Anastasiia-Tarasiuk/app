@@ -9,6 +9,7 @@ export const StyledSidebar = styled.div`
   height: 90%;
   background-color: gray;
   padding: 11px;
+  overflow: scroll;
   
   &:hover,
   &:focus {

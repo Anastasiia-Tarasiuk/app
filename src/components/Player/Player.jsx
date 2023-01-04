@@ -8,6 +8,5 @@ export const Player = ({src, name}) => {
             { name ? <Message text={name}/> : <Message text={"Choose video to play"}/>}
             <Video controls src={src || ""} autoPlay={true}></Video>
         </PlayerWrapper>
-
     )
 }

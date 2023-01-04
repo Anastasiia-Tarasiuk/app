@@ -3,7 +3,7 @@ import { Routes, Route } from "react-router-dom";
 import { LoginForm } from './components/LoginForm';
 import { RegisterForm } from './components/RegisterForm';
 import { PublicPage } from './components/PublicPage';
-import { PrivatePage } from './components/PrivatePage';
+import { PrivatePage } from './components/PrivatePage/PrivatePage';
 import { NotFound } from './components/NotFound';
 import PrivateRoute from './components/PrivateRoute';
 import {AppWrapper} from "./App.styled";

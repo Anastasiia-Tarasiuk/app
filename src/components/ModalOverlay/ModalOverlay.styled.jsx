@@ -24,6 +24,7 @@ export const Modal = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  border-radius: 10px;
 `
 
 export const DeleteButton = styled(ButtonComponent)`
