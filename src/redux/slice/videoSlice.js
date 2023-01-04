@@ -28,10 +28,14 @@ export const videoSlice = createSlice({
             if (state.currentVideo.videoId === action.payload.id) {
                 state.currentVideo = {};
             }
+        },
+        deleteAllVideos: (state, action) => {
+            state.allVideos = state.allVideos.filter(video => video.loggedInUserId !== action.payload);
+            state.currentVideo = {};
         }
     },
 })
 
-export const { addVideo, getCurrentVideo, editVideo, deleteVideo} = videoSlice.actions;
+export const { addVideo, getCurrentVideo, editVideo, deleteVideo, deleteAllVideos} = videoSlice.actions;
 
 export default videoSlice.reducer;

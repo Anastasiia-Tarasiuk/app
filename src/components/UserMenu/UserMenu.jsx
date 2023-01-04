@@ -5,9 +5,14 @@ import {toggleLoggedInUser} from "../../redux/slice/userSlice";
 import {getCurrentVideo} from "../../redux/slice/videoSlice";
 import {useNavigate} from "react-router-dom";
 import {useDispatch} from "react-redux";
+import {RenameUserModalContent} from "../RenameUserModalContent/RenameUserModalContent";
+import {SettingsModalContent} from "../SettingsModalContent/SettingsModalContent";
+import {ModalOverlay} from "../ModalOverlay/ModalOverlay";
 
 export const UserMenu = () => {
     const [isShown, setIsShown] = useState(false);
+    const [showModal, setShowModal] = useState(false);
+    const [showRenameContent, setShowRenameContent] = useState(true);
 
     const navigate = useNavigate();
     const dispatch = useDispatch();
@@ -24,15 +29,15 @@ export const UserMenu = () => {
 
 
     function onRenameClick(e){
-        // setIsShown(false);
+        setIsShown(false);
 
-        // if (e.target.dataset.name === "Rename") {
-        //     console.log('click')
-        // }
+        if (e.target.dataset.name === "Rename") {
+            setShowModal(true);
+        }
 
-        if (e.target.dataset.name === "Picture") {
-            console.log('click')
-
+        if (e.target.dataset.name === "Settings") {
+            setShowModal(true);
+            setShowRenameContent(false);
         }
     }
 
@@ -45,10 +50,10 @@ export const UserMenu = () => {
                 </Icon>}/>
         {isShown && <Menu onClick={e => onRenameClick(e)}>
             <li data-name="Rename">Rename</li>
-            <li data-name="Picture">Change profile picture</li>
             <li data-name="Settings">Settings</li>
         </Menu>}
         <ButtonComponent className="logoutButton" type="button" text="Logout" onClick={handleButtonClick} />
+        <ModalOverlay shown={showModal} close={() => setShowModal(!showModal)} content={showRenameContent ? <RenameUserModalContent close={() => setShowModal(!showModal)} /> : <SettingsModalContent close={() => setShowModal(!showModal)} />}/>
         </UserMenuWrapper>
 
 

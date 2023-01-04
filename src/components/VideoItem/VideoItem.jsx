@@ -25,7 +25,7 @@ export const VideoItem = ({name, link, id}) => {
         </Item>
         <ButtonComponent className="play" type="button" text="Play" onClick={handlePlayButtonClick}/>
         <VideoItemButton className="edit" type="button" text="Edit" onClick={() => setShowModal(!showModal)}/>
-        <ModalOverlay link={link} id={id} name={name} shown={showModal} close={() => setShowModal(!showModal)} content={<EditVideoModalContent name={name} link={link} id={id} close={() => setShowModal(!showModal)} />}/>
+        <ModalOverlay shown={showModal} close={() => setShowModal(!showModal)} content={<EditVideoModalContent name={name} link={link} id={id} close={() => setShowModal(!showModal)} />}/>
     </>
 
 }
