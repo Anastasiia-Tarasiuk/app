@@ -6,9 +6,19 @@ export const Icon = styled.svg`
 
 export const Menu = styled.ul`
   position: absolute;
+  top: 40px;
+  right: 55px;
+  padding-bottom: 50px;
 `
 
-export const UserMenuWrapper = styled.div`
-    //display: flex;
+export const Wrapper = styled.div`
+   margin-right: 10px;
+`
+
+export const MenuItem = styled.li`
+  cursor: pointer;
   
+  &:hover {
+    font-weight: 500;
+  }
 `

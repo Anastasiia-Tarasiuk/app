@@ -20,7 +20,7 @@ export const SettingsModalContent = ({close}) => {
     }
 
     return <>
-        <h2>{"Do you want to delete your account?"}</h2>
+        <h2>{"Delete user"}</h2>
         <div>
             <ButtonComponent className="delete" type="button" text="Delete" onClick={handleDeleteButtonClick}/>
             <CancelButton className="cancel" type="button" text="Cancel" onClick={handleCancelButtonClick}/>
