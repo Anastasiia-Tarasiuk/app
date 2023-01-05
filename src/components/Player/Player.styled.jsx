@@ -14,6 +14,6 @@ export const Video = styled.video`
   }
   
   @media screen and (min-width: 1024px) {
-    width: 1000px;
+    width: 950px;
   }
 `

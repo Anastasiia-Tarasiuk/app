@@ -3,17 +3,18 @@ import styled from "@emotion/styled";
 export const StyledSidebar = styled.div`
   position: absolute;
   z-index: 1;
-  right: -48vw;
+  right: -48%;
   transition: right 500ms;
-  width: 50vw;
+  width: 50%;
   height: 90%;
   background-color: gray;
-  padding: 11px;
-  overflow: scroll;
-  
+  padding: 10px;
+  overflow-y: scroll;
+  overflow-x: hidden;
+
   &:hover,
   &:focus {
-    right: 0vw;
+    right: 0;
     transition: right 500ms;
   }
 `
@@ -23,4 +24,5 @@ export const Icon = styled.svg`
   fill: #ffc107;
   transform: rotate(180deg);
   padding: 0;
+  position: absolute;
 `

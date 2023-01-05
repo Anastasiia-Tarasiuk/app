@@ -44,7 +44,7 @@ export const LoginForm = () => {
 
     return (
         <>
-            <Link to="/"><ButtonComponent type="button" text="Back"/></Link>
+            {/*<Link to="/"><ButtonComponent type="button" text="Back"/></Link>*/}
             <Message text="Please sing in" />
             <form onSubmit={handleFormSubmit}>
                 <FormInput labelText="Email" inputType="email" inputName="email" onChange={value => setEmail(value)} controlId="emailId" />
