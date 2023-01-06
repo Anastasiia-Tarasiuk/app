@@ -11,12 +11,9 @@ export const AddVideoBar = () => {
 
     const dispatch = useDispatch();
 
-    const videoName = Date.now();
-    const videoId = videoName;
-
     function handleButtonClick(e){
         if (e.target.form[0].value !== '') {
-            dispatch(addVideo({loggedInUserId, videoName, videoLink, videoId}));
+            dispatch(addVideo({loggedInUserId, videoName: Date.now(), videoLink, videoId: Date.now()}));
             Notiflix.Notify.success('Video was added successfully');
         }
     }

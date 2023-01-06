@@ -30,7 +30,7 @@ export const EditVideoModalContent = ({name, link, id, close}) => {
     }
 
     return <>
-        <h2>{"Edit " + name }</h2>
+        <h2>{"Edit video"}</h2>
         <FormInput labelText="Enter new name" inputType="text" inputName="videoName" onChange={value => setNewName(value)} />
         <div>
             <ButtonComponent className="rename" type="button" text="Rename" onClick={handleRenameButtonClick}/>
