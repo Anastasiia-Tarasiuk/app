@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/avenga-app/static/css/main.c50553fb.css",
-    "main.js": "/avenga-app/static/js/main.8f821285.js",
+    "main.js": "/avenga-app/static/js/main.27e516a9.js",
     "static/js/787.b0e548b5.chunk.js": "/avenga-app/static/js/787.b0e548b5.chunk.js",
     "index.html": "/avenga-app/index.html",
     "main.c50553fb.css.map": "/avenga-app/static/css/main.c50553fb.css.map",
-    "main.8f821285.js.map": "/avenga-app/static/js/main.8f821285.js.map",
+    "main.27e516a9.js.map": "/avenga-app/static/js/main.27e516a9.js.map",
     "787.b0e548b5.chunk.js.map": "/avenga-app/static/js/787.b0e548b5.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.c50553fb.css",
-    "static/js/main.8f821285.js"
+    "static/js/main.27e516a9.js"
   ]
 }
