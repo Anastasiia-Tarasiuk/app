@@ -18,7 +18,7 @@ export const userSlice = createSlice({
         editUser: (state, action) => {
             if (state.loggedInUser.name !== action.payload) {
                 state.loggedInUser.name = action.payload;
-                state.allUsers.map(user => {
+                state.allUsers.forEach(user => {
                     if (user.id === state.loggedInUser.id) {
                         user.name = action.payload;
                     }

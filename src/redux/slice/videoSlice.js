@@ -16,7 +16,7 @@ export const videoSlice = createSlice({
             state.currentVideo = action.payload;
         },
         editVideo: (state, action) => {
-            state.allVideos.map(video => {
+            state.allVideos.forEach(video => {
                 if (video.videoId === action.payload.videoId) {
                     video.videoName = action.payload.videoName;
                 }
