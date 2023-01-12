@@ -5,6 +5,7 @@ import {ModalOverlay} from "../ModalOverlay/ModalOverlay";
 import {useState} from "react";
 import {VideoItemButton} from "./VideoItem.styled";
 import {EditVideoModalContent} from "../EditVideoModalContent/EditVideoModalContent";
+import Notiflix from "notiflix";
 
 export const VideoItem = ({name, link, id}) => {
     const [showModal, setShowModal] = useState(false);
@@ -16,6 +17,8 @@ export const VideoItem = ({name, link, id}) => {
     function handlePlayButtonClick() {
         if (currentVideoLink !==link) {
             dispatch(getCurrentVideo({videoLink: link, videoName: name, videoId: id}));
+        } else {
+            Notiflix.Notify.warning('This video is playing now');
         }
     }
 
