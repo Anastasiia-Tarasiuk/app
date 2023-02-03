@@ -2,10 +2,11 @@ import './App.css';
 import { Routes, Route } from "react-router-dom";
 import { RegisterForm } from './components/RegisterForm';
 import { PublicPage } from './components/PublicPage/PublicPage';
-import { PrivatePage } from './components/PrivatePage/PrivatePage';
+import { PrivateMainPage } from './components/PrivateMainPage/PrivateMainPage';
 import { NotFound } from './components/NotFound';
 import PrivateRoute from './components/PrivateRoute';
-import {AppWrapper} from "./App.styled";
+import { AppWrapper } from "./App.styled"; 
+import {PrivateSearchPage} from './components/PrivateSearchPage/PrivateSearchPage';
 
 function App() {
    return <AppWrapper>
@@ -14,8 +15,14 @@ function App() {
       <Route path="register" element={<RegisterForm />} />
       <Route path="main" element={
         <PrivateRoute>
-          <PrivatePage />
-        </PrivateRoute>} />
+          <PrivateMainPage />
+        </PrivateRoute>}
+      />
+      <Route path="search" element={
+        <PrivateRoute>
+          <PrivateSearchPage />
+        </PrivateRoute>}
+      />
       <Route path="*" element={<NotFound />} />      
     </Routes>
     </AppWrapper>
