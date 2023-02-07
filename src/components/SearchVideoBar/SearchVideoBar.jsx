@@ -2,10 +2,10 @@ import {FormInput} from "../FormInput";
 import {useState} from "react";
 import {useDispatch, useSelector} from "react-redux";
 import {addVideo} from "../../redux/slice/videoSlice";
-import {AddVideoForm, AddVideoButton} from "./AddVideoBar.styled";
+import {AddVideoForm, AddVideoButton} from "../AddVideoBar/AddVideoBar.styled";
 import Notiflix from "notiflix";
 
-export const AddVideoBar = ({labelText, buttonText}) => {
+export const SearchVideoBar = ({labelText, buttonText}) => {
     const [videoLink, setVideoLink] = useState('');
     const loggedInUserId = useSelector((state) => state.users.loggedInUser.id);
 

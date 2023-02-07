@@ -2,5 +2,8 @@ import styled from "@emotion/styled";
 
 export const UserMenuWrapper = styled.div`
   display: flex;
-  justify-content: right;
+
+  div:nth-of-type(1){
+    margin-left: auto;
+  }
 `
