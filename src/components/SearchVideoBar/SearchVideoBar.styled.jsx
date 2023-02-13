@@ -8,6 +8,6 @@ export const AddVideoForm = styled.form`
     width: 300px;
 `
 
-export const AddVideoButton = styled(ButtonComponent)`
+export const SearchVideoButton = styled(ButtonComponent)`
   margin-left: 20px;
 `

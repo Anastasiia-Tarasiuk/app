@@ -23,8 +23,8 @@ export const PrivateMainPage = () => {
             <SharedLayout/>
             <Message text= {"Welcome to your playlist, " + loggedInUserName}/>
             <Sidebar/>
-            <AddVideoBar labelText={"Set the link here"} buttonText={"Add"}/>
-            <Player src={currentVideoLink} name={currentVideoName} />
+            <AddVideoBar labelText={"Set the link here"} buttonText={"Add"} />            
+            <Player src={currentVideoLink} name={currentVideoName} /> 
             <SearchText className="text">Or<ButtonComponentWithMargin className="searchButton" type="button" text="Search" onClick={handleSearchButtonClick}/>for new videos to watch</SearchText>
         </>
     )
