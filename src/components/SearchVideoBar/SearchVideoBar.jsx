@@ -12,6 +12,7 @@ const API_KEY = 'b19e6b2986fc1ae4c290daa4cefec337';
 const BASE_URL = 'https://api.themoviedb.org/3/';
 const SEARCH_URL = `${BASE_URL}search/movie`;
 
+
 export const SearchVideoBar = ({labelText, buttonText}) => {
     const [searchQuery, setSearchQuery] = useState('');
     // let response = null;

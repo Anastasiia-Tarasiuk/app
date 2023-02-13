@@ -19,7 +19,7 @@ export const searchSlice = createSlice({
         },
         saveResponse: (state, action) => {
             // console.log(action.payload)
-            state.response = [action.payload];
+            state.response = action.payload;
         },
         toggleLoggedInUser: (state, action) => {
             // state.loggedInUser = action.payload;
