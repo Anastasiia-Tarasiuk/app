@@ -2,19 +2,11 @@ import { SearchItem } from "../SearchItem/SearchItem"
 import { nanoid } from '@reduxjs/toolkit';
 
 export const SearchList = ({ items }) => {
-    
-    console.log(items)
-
-    const itemsForRender = items.map(item => {
-    // const date = item.createdAt.slice(0, 10).split('-');
-    // const year = date[0];
-    // const month = date[1];
-    // const day = date[2];
-
-    return <SearchItem key={nanoid()} title={item.original_title} />
+  const itemsForRender = items.map(item => {
+    return <SearchItem key={nanoid()} title={item.original_title} img={item.poster_path} year={item.release_date.slice(0, 4)} movieId={item.id} />
   })
- 
-    return <ul children={itemsForRender}></ul>
+
+  return <ul children={itemsForRender}></ul>
 }
 
 

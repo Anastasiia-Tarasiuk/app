@@ -8,7 +8,7 @@ export const Overlay = styled.div`
   width: 100vw;
   height: 100vh;
   overflow-y: scroll;
-  background-color: rgba(17, 17, 17, 0.6);
+  background-color: transparent;
   backdrop-filter: blur(10px);
   z-index: 2;
 `
@@ -21,7 +21,6 @@ export const Modal = styled.div`
   transform: translate(-50%, -50%);
   width: 300px;
   height: 300px;
-  padding: 100px;
   background-color: gray;  
   display: flex;
   flex-direction: column;
