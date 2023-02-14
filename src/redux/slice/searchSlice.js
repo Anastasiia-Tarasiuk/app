@@ -4,7 +4,6 @@ const initialState = {
     searchQuery: null,
     searchKey: null,
     response: null,
-    // loggedInUser: {}
 }
 
 export const searchSlice = createSlice({

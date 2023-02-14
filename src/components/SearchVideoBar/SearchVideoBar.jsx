@@ -1,19 +1,21 @@
 import { FormInput } from "../FormInput";
-import {useState} from "react";
+import {useState, useEffect} from "react";
 import {useDispatch} from "react-redux";
 import {addSearchQuery, saveResponse} from "../../redux/slice/searchSlice";
 import { AddVideoForm, SearchVideoButton } from "../SearchVideoBar/SearchVideoBar.styled";
 import { API_KEY, SEARCH_URL } from "../../variables/variables";
 
 
-export const SearchVideoBar = ({labelText, buttonText}) => {
+export const SearchVideoBar = ({labelText, buttonText, page}) => {
     const [searchQuery, setSearchQuery] = useState('');
-
+  
     const dispatch = useDispatch();
+
+    console.log("page", page)
 
     function handleButtonClick(e){
         if (e.target.form[0].value !== '') {
-            apiSearch(searchQuery);
+            apiSearch(searchQuery, page);
             dispatch(addSearchQuery(searchQuery));
         }
     }
@@ -23,7 +25,7 @@ export const SearchVideoBar = ({labelText, buttonText}) => {
         e.currentTarget.elements[0].value = '';
     }
 
-    function apiSearch(query, limit = 10, page = 1) {
+    function apiSearch(query, page=1) {
         const searchLink = `${SEARCH_URL}?api_key=${API_KEY}&page=${page}&query=${query}`;
         const xhr = new XMLHttpRequest();
 
@@ -36,7 +38,6 @@ export const SearchVideoBar = ({labelText, buttonText}) => {
                 console.log(`Помилка ${xhr.status}: ${xhr.statusText}`);
             } else {
                 const response = JSON.parse(xhr.response);
-
                 dispatch(saveResponse(response.results));
             }
         }
