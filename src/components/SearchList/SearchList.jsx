@@ -7,7 +7,7 @@ export const SearchList = ({ items }) => {
     return <SearchItem key={nanoid()} title={item.original_title} img={item.poster_path} year={item.release_date.slice(0, 4)} movieId={item.id} />
   })
 
-  return <ul children={itemsForRender}></ul>
+  return <ul>{itemsForRender}</ul>
 }
 
 

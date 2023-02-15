@@ -12,7 +12,8 @@ import { API_KEY, IMAGE_URL, BASE_URL } from "../../variables/variables";
 import defaultImage from "../../images/no-image.jpg";
 import placeholderImage from "../../images/coming-soon.webp";
 
-export const SearchItem = ({ title, img, year, movieId }) => {
+export const SearchItem = ({ title, img, year, movieId, text }) => {
+    console.log(text)
     const [showModal, setShowModal] = useState(false);
     const loggedInUserId = useSelector((state) => state.users.loggedInUser.id);
     let correctYouTubeLink = null;

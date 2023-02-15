@@ -22,7 +22,7 @@ export const PrivateSearchPage = () => {
             <Message text={"Search for videos"} />     
             <SearchVideoBar page={currentPage} labelText={"Type here"} buttonText={"Search"} />
             {response && <SearchList items={response} />}
-            <ButtonComponent text={"Next page"} onClick={onNextPageButtonClick} />
+            <ButtonComponent text={"Next page"} onClick={onNextPageButtonClick} /> 
         </div>
     )
 }
