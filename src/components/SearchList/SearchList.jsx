@@ -1,5 +1,7 @@
 import { SearchItem } from "../SearchItem/SearchItem"
 import { nanoid } from '@reduxjs/toolkit';
+import { MovieList } from "./SearchList.styled";
+
 
 export const SearchList = ({ items }) => {
   
@@ -7,7 +9,7 @@ export const SearchList = ({ items }) => {
     return <SearchItem key={nanoid()} title={item.original_title} img={item.poster_path} year={item.release_date.slice(0, 4)} movieId={item.id} />
   })
 
-  return <ul>{itemsForRender}</ul>
+  return <MovieList>{itemsForRender}</MovieList>
 }
 
 

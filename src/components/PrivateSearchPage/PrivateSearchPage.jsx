@@ -16,11 +16,17 @@ export const PrivateSearchPage = () => {
         })
     }
 
+    function pageReset(page) {
+        setCurrentPage(page);
+    }
+
+    // console.log('currentPage', currentPage)
+
     return (
         <div>
             <SharedLayout/>
             <Message text={"Search for videos"} />     
-            <SearchVideoBar page={currentPage} labelText={"Type here"} buttonText={"Search"} />
+            <SearchVideoBar page={currentPage} labelText={"Type here"} buttonText={"Search"} onClick={e=>pageReset(e)} />
             {response && <SearchList items={response} />}
             <ButtonComponent text={"Next page"} onClick={onNextPageButtonClick} /> 
         </div>

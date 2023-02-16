@@ -6,33 +6,32 @@ import { AddVideoForm, SearchVideoButton } from "../SearchVideoBar/SearchVideoBa
 import { API_KEY, SEARCH_URL } from "../../variables/variables";
 
 
-export const SearchVideoBar = ({labelText, buttonText, page}) => {
+export const SearchVideoBar = ({labelText, buttonText, page, onClick}) => {
     const [searchQuery, setSearchQuery] = useState('');
     const [currentPage, setCurrentPage] = useState(1);
-    
-    console.log("page", page);
-    console.log("currentPage", currentPage);
+   
+    // console.log("page", page);
+    // console.log("currentPage", currentPage);
 
     const dispatch = useDispatch();
 
     if (page !== currentPage) {
         setCurrentPage(page);
-        apiSearch(searchQuery, currentPage);
-        dispatch(addSearchQuery(searchQuery));
+        apiSearch(searchQuery, page);
     }
-  
 
     function handleButtonClick(e){
         if (e.target.form[0].value !== '') {
-            apiSearch(searchQuery, currentPage);
+            onClick(1);
+            setCurrentPage(1);
+            apiSearch(searchQuery, page);
             dispatch(addSearchQuery(searchQuery));
         }
     }
 
     function handleFormSubmit(e){
         e.preventDefault();
-        e.currentTarget.elements[0].value = '';
-        setCurrentPage(1);
+        e.currentTarget.elements[0].value = '';          
     }
 
     function apiSearch(query, page) {
