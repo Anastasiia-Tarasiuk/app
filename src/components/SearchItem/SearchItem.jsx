@@ -78,8 +78,8 @@ export const SearchItem = ({ title, img, year, movieId }) => {
         setShowTooltip(false);
     }
 
-    function titileCut( text, limit) {
-        if (text.length <= limit) return text;
+    function titileCut(text, limit) {
+        if (text.length <= limit + 3) return text;
         
         text = text.slice( 0, limit); 
         return text.trim() + "...";
