@@ -1,5 +1,4 @@
 import styled from "@emotion/styled";
-// import { ModalOverlay } from "../ModalOverlay/ModalOverlay";
 import { ButtonComponent } from "../Button";
 
 export const Icon = styled.svg`
@@ -12,7 +11,7 @@ export const PlayButton = styled(ButtonComponent)`
   right:0;
 `
 
-export const TitleWrapper = styled.div`
+export const ImageWrapper = styled.div`
   position: relative;
   width: 300px;
 `
@@ -51,4 +50,17 @@ export const MovieItem = styled.li`
 
 export const Title = styled.p`
   margin: 0; 
+  cursor: default;
+`
+
+export const Tooltip = styled.div`
+  position: absolute;
+  background-color: gray;
+  color: white;
+  top: 0;
+  z-index: 1;
+`
+
+export const TitleWrapper = styled.div`
+  position: relative;
 `
