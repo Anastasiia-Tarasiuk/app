@@ -14,5 +14,41 @@ export const PlayButton = styled(ButtonComponent)`
 
 export const TitleWrapper = styled.div`
   position: relative;
-     
+  width: 300px;
+`
+
+export const MovieItem = styled.li`
+  width: 300px;
+
+  @media screen and (min-width: 768px) {
+    margin: 0 16px;
+  }
+
+  &:not(:last-child) {
+    margin-bottom: 16px;
+    
+    @media screen and (min-width: 768px) {
+      margin-bottom: 0;
+    }
+  }
+
+  &:not(:nth-last-of-type(-n+2)) {
+    @media screen and (min-width: 768px) {
+      margin-bottom: 16px;
+    }
+
+    @media screen and (min-width: 1024px) {
+      margin-bottom: 0;
+    }
+  }
+
+  &:not(:nth-last-of-type(-n+3)) {
+    @media screen and (min-width: 1024px) {
+      margin-bottom: 16px;
+    }
+  }
+`
+
+export const Title = styled.p`
+  margin: 0; 
 `

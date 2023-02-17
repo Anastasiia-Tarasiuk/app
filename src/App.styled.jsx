@@ -7,3 +7,4 @@ export const AppWrapper = styled.div`
   padding: 10px;
   overflow-x: hidden;
 `
+
