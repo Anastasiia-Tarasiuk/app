@@ -50,7 +50,7 @@ export const MovieItem = styled.li`
 
 export const Title = styled.p`
   margin: 0; 
-  cursor: default;
+  cursor: default; 
 `
 
 export const Tooltip = styled.div`
