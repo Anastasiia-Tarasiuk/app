@@ -1,6 +1,6 @@
 import { ButtonComponent } from "../Button";
 import { UserMenu } from "../UserMenu/UserMenu";
-import { addSearchKey, addSearchQuery, saveResponse } from "../../redux/slice/searchSlice";
+import { addSearchKey, addSearchQuery, saveResponse, setTotalPages } from "../../redux/slice/searchSlice";
 import {toggleLoggedInUser} from "../../redux/slice/userSlice";
 import { getCurrentVideo } from "../../redux/slice/videoSlice";
 import {useNavigate} from "react-router-dom";
@@ -19,7 +19,8 @@ export const SharedLayout = ({modalSize}) => {
         dispatch(getCurrentVideo({}));
         dispatch(addSearchQuery(null));
         dispatch(addSearchKey(null));
-        dispatch(saveResponse(null ));
+        dispatch(saveResponse(null));
+        dispatch(setTotalPages(null ));
     }
 
     function handleBackButtonClick() {
