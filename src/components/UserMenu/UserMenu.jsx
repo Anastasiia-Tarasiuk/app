@@ -3,9 +3,10 @@ import {Icon, Menu, Wrapper, MenuItem} from "./UserMenu.styled";
 import {ButtonComponent} from "../Button";
 import {RenameUserModalContent} from "../RenameUserModalContent/RenameUserModalContent";
 import {SettingsModalContent} from "../SettingsModalContent/SettingsModalContent";
-import {ModalOverlay} from "../ModalOverlay/ModalOverlay";
+import { ModalOverlay } from "../ModalOverlay/ModalOverlay";
 
-export const UserMenu = () => {
+
+export const UserMenu = ({modalSize}) => {
     const [isShown, setIsShown] = useState(false);
     const [showModal, setShowModal] = useState(false);
     const [showRenameContent, setShowRenameContent] = useState(true);
@@ -53,6 +54,6 @@ export const UserMenu = () => {
             <MenuItem data-name="Rename">Rename</MenuItem>
             <MenuItem data-name="Settings">Settings</MenuItem>
         </Menu>}
-        <ModalOverlay shown={showModal} close={() => setShowModal(!showModal)} content={showRenameContent ? <RenameUserModalContent close={() => setShowModal(!showModal)} /> : <SettingsModalContent close={() => setShowModal(!showModal)} />}/>
+        <ModalOverlay style={modalSize} shown={showModal} close={() => setShowModal(!showModal)} content={showRenameContent ? <RenameUserModalContent close={() => setShowModal(!showModal)} /> : <SettingsModalContent close={() => setShowModal(!showModal)} />}/>
         </Wrapper>
 }

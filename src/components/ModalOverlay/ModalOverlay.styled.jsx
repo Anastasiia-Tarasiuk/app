@@ -19,8 +19,8 @@ export const Modal = styled.div`
   top: 50%; 
   left: 50%; 
   transform: translate(-50%, -50%);
-  width: 300px;
-  height: 300px;
+  // width: 300px;
+  // height: 300px;
   background-color: gray;  
   display: flex;
   flex-direction: column;
@@ -28,8 +28,8 @@ export const Modal = styled.div`
   border-radius: 10px;
 
   @media screen and (min-width: 768px) {
-    width: 600px;
-    height: 600px;
+    // width: 600px;
+    // height: 600px;
   }
 `
 

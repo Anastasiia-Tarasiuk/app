@@ -56,6 +56,7 @@ export const Title = styled.p`
 export const Tooltip = styled.div`
   position: absolute;
   background-color: gray;
+  cursor: default; 
   color: white;
   top: 0;
   z-index: 1;

@@ -9,7 +9,8 @@ import { AppWrapper } from "./App.styled";
 import {PrivateSearchPage} from './components/PrivateSearchPage/PrivateSearchPage';
 
 function App() {
-   return <AppWrapper>
+
+  return <AppWrapper>
     <Routes>
       <Route path="/" element={<PublicPage />} />
       <Route path="register" element={<RegisterForm />} />

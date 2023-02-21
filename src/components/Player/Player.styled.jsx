@@ -7,12 +7,12 @@ export const PlayerWrapper = styled.div`
 `
 
 export const Video = styled.video`
-  width: 300px;
+  width: 270px;
   height: 150px;
 
   @media screen and (min-width: 768px) {
-    width: 750px;
-    height: 450px;
+    width: 650px;
+    height: 350px;
   }
   
   @media screen and (min-width: 1024px) {
@@ -22,12 +22,12 @@ export const Video = styled.video`
 `
 
 export const YouTube = styled.iframe`
-  width: 300px;
+  width: 270px;
   height: 150px;
 
   @media screen and (min-width: 768px) {
-    width: 750px;
-    height: 450px;
+    width: 650px;
+    height: 350px;
   }
   
   @media screen and (min-width: 1024px) {
