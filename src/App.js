@@ -8,7 +8,6 @@ import PrivateRoute from './components/PrivateRoute';
 import { AppWrapper } from "./App.styled"; 
 import { PrivateSearchPage } from './components/PrivateSearchPage/PrivateSearchPage';
 import { MODAL_SIZE } from './variables/variables';
-import { SharedLayout } from './components/SharedLayout/SharedLayout';
 
 function App() {
 
@@ -25,7 +24,6 @@ function App() {
   }
 
   setModalSize(MODAL_SIZE);
-
 
   return <AppWrapper>
     <Routes>
