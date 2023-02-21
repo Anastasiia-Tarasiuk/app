@@ -1,55 +1,29 @@
 import { FormInput } from "../FormInput";
 import {useState} from "react";
 import {useDispatch} from "react-redux";
-import {addSearchQuery, saveResponse} from "../../redux/slice/searchSlice";
+import {addSearchQuery, saveResponse, setTotalPages} from "../../redux/slice/searchSlice";
 import { AddVideoForm, SearchVideoButton } from "../SearchVideoBar/SearchVideoBar.styled";
-import { API_KEY, SEARCH_URL } from "../../variables/variables";
+import { apiSearch } from "../../apiSearch/apiSearch";
 
-
-export const SearchVideoBar = ({labelText, buttonText, page, onClick}) => {
+export const SearchVideoBar = ({labelText, buttonText, onClick}) => {
     const [searchQuery, setSearchQuery] = useState('');
-    const [currentPage, setCurrentPage] = useState(1);
-   
-    // console.log("page", page);
-    // console.log("currentPage", currentPage);
 
     const dispatch = useDispatch();
 
-    if (page !== currentPage) {
-        setCurrentPage(page);
-        apiSearch(searchQuery, page);
-    }
-
-    function handleButtonClick(e){
+    async function handleButtonClick(e){
         if (e.target.form[0].value !== '') {
             onClick(1);
-            setCurrentPage(1);
-            apiSearch(searchQuery, page);
+            await apiSearch(searchQuery, 1).then(res => {
+                dispatch(saveResponse(res.results));
+                dispatch(setTotalPages(res.total_pages))
+            });
             dispatch(addSearchQuery(searchQuery));
         }
     }
 
     function handleFormSubmit(e){
         e.preventDefault();
-        e.currentTarget.elements[0].value = '';          
-    }
-
-    function apiSearch(query, page) {
-        const searchLink = `${SEARCH_URL}?api_key=${API_KEY}&page=${page}&query=${query}`;
-        const xhr = new XMLHttpRequest();
-
-        xhr.open('GET', searchLink);
-
-        xhr.send();
-        
-        xhr.onload = function () {
-            if (xhr.status !== 200) {
-                console.log(`Помилка ${xhr.status}: ${xhr.statusText}`);
-            } else {
-                const response = JSON.parse(xhr.response);
-                dispatch(saveResponse(response.results));
-            }
-        }
+        e.currentTarget.elements[0].value = '';         
     }
 
     return (

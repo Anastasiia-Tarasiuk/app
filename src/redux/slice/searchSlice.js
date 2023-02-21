@@ -4,6 +4,7 @@ const initialState = {
     searchQuery: null,
     searchKey: null,
     response: null,
+    totalPages: null,
 }
 
 export const searchSlice = createSlice({
@@ -20,26 +21,30 @@ export const searchSlice = createSlice({
             // console.log(action.payload)
             state.response = action.payload;
         },
-        toggleLoggedInUser: (state, action) => {
-            // state.loggedInUser = action.payload;
+        setTotalPages:(state, action) => {
+            // console.log(action.payload)
+            state.totalPages = action.payload;
         },
-        editUser: (state, action) => {
-            // if (state.loggedInUser.name !== action.payload) {
-            //     state.loggedInUser.name = action.payload;
-            //     state.allUsers.forEach(user => {
-            //         if (user.id === state.loggedInUser.id) {
-            //             user.name = action.payload;
-            //         }
-            //     })
-            // }
-        },
-        deleteUser: (state, action) => {
-            // state.allUsers = state.allUsers.filter(user => user.id !== action.payload);
-            // state.loggedInUser = null;
-        }
+        // toggleLoggedInUser: (state, action) => {
+        //     // state.loggedInUser = action.payload;
+        // },
+        // editUser: (state, action) => {
+        //     // if (state.loggedInUser.name !== action.payload) {
+        //     //     state.loggedInUser.name = action.payload;
+        //     //     state.allUsers.forEach(user => {
+        //     //         if (user.id === state.loggedInUser.id) {
+        //     //             user.name = action.payload;
+        //     //         }
+        //     //     })
+        //     // }
+        // },
+        // deleteUser: (state, action) => {
+        //     // state.allUsers = state.allUsers.filter(user => user.id !== action.payload);
+        //     // state.loggedInUser = null;
+        // }
     },
 })
 
-export const { addSearchQuery, addSearchKey, saveResponse, toggleLoggedInUser, editUser, deleteUser} = searchSlice.actions;
+export const { addSearchQuery, addSearchKey, saveResponse, setTotalPages} = searchSlice.actions;
 
 export default searchSlice.reducer;
