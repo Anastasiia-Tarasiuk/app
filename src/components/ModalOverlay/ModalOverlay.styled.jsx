@@ -19,18 +19,11 @@ export const Modal = styled.div`
   top: 50%; 
   left: 50%; 
   transform: translate(-50%, -50%);
-  // width: 300px;
-  // height: 300px;
   background-color: gray;  
   display: flex;
   flex-direction: column;
   align-items: center;
   border-radius: 10px;
-
-  @media screen and (min-width: 768px) {
-    // width: 600px;
-    // height: 600px;
-  }
 `
 
 export const DeleteButton = styled(ButtonComponent)`

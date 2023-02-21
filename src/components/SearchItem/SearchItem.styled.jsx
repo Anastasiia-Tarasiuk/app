@@ -65,3 +65,13 @@ export const Tooltip = styled.div`
 export const TitleWrapper = styled.div`
   position: relative;
 `
+
+export const AddButton = styled(ButtonComponent)`
+  margin-top: 20px;
+
+`
+export const ModalContentWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`

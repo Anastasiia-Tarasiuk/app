@@ -1,6 +1,5 @@
-import { ButtonComponent } from "../Button";
 import {useState} from "react";
-import { Icon, PlayButton, ImageWrapper, MovieItem, Title, Tooltip, TitleWrapper} from "./SearchItem.styled";
+import { Icon, PlayButton, ImageWrapper, MovieItem, Title, Tooltip, TitleWrapper, AddButton, ModalContentWrapper} from "./SearchItem.styled";
 import { ModalOverlay } from "../ModalOverlay/ModalOverlay";
 import {addSearchKey} from "../../redux/slice/searchSlice";
 import { Player } from "../Player/Player"
@@ -74,10 +73,10 @@ export const SearchItem = ({ title, img, year, movieId, modalSize }) => {
 
     function renderModalContent(link) {
         if (correctYouTubeLink) {
-            return <div>
+            return <ModalContentWrapper>
                 <Player src={link} name={`${title + ", " + year}`} close={() => setShowModal(!showModal)} />
-                <ButtonComponent className="AddVideoToFavouriteButton" type="button" text={"Add to list"} onClick={e => addVideoToFavourites(e)} />
-            </div>
+                <AddButton className="AddVideoToFavouriteButton" type="button" text={"Add to list"} onClick={e => addVideoToFavourites(e)} />
+            </ModalContentWrapper>
         } else {
             return <Message text={"Sorry, here is no video"} />
         }

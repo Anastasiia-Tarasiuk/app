@@ -6,7 +6,7 @@ import { useSelector } from "react-redux";
 import { ButtonComponent } from "../Button";
 import { useState } from "react";
 
-export const PrivateSearchPage = () => {
+export const PrivateSearchPage = ({modalSize}) => {
     const response = useSelector((state) => state.search.response);
     const [currentPage, setCurrentPage] = useState(1);
 
@@ -20,11 +20,9 @@ export const PrivateSearchPage = () => {
         setCurrentPage(page);
     }
 
-    // console.log('currentPage', currentPage)
-
     return (
         <div>
-            <SharedLayout/>
+            <SharedLayout modalSize={modalSize}/>
             <Message text={"Search for videos"} />     
             <SearchVideoBar page={currentPage} labelText={"Type here"} buttonText={"Search"} onClick={e=>pageReset(e)} />
             {response && <SearchList items={response} />}
