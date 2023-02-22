@@ -5,6 +5,7 @@ const initialState = {
     searchKey: null,
     response: null,
     totalPages: null,
+    page: null,
 }
 
 export const searchSlice = createSlice({
@@ -24,6 +25,10 @@ export const searchSlice = createSlice({
         setTotalPages:(state, action) => {
             // console.log(action.payload)
             state.totalPages = action.payload;
+        },
+        setPage:(state, action) => {
+            // console.log(action.payload)
+            state.page = action.payload;
         },
         // toggleLoggedInUser: (state, action) => {
         //     // state.loggedInUser = action.payload;
@@ -45,6 +50,6 @@ export const searchSlice = createSlice({
     },
 })
 
-export const { addSearchQuery, addSearchKey, saveResponse, setTotalPages} = searchSlice.actions;
+export const { addSearchQuery, addSearchKey, saveResponse, setTotalPages, setPage} = searchSlice.actions;
 
 export default searchSlice.reducer;

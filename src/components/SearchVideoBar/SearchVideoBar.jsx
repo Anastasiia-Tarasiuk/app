@@ -1,21 +1,20 @@
 import { FormInput } from "../FormInput";
-import {useState} from "react";
 import {useDispatch} from "react-redux";
-import {addSearchQuery, saveResponse, setTotalPages} from "../../redux/slice/searchSlice";
+import {addSearchQuery, saveResponse, setPage, setTotalPages} from "../../redux/slice/searchSlice";
 import { AddVideoForm, SearchVideoButton } from "../SearchVideoBar/SearchVideoBar.styled";
 import { apiSearch } from "../../apiSearch/apiSearch";
 
-export const SearchVideoBar = ({labelText, buttonText, onClick}) => {
-    const [searchQuery, setSearchQuery] = useState('');
-
+export const SearchVideoBar = ({labelText, buttonText}) => {
+    let searchQuery = "";
+ 
     const dispatch = useDispatch();
 
     async function handleButtonClick(e){
         if (e.target.form[0].value !== '') {
-            onClick(1);
             await apiSearch(searchQuery, 1).then(res => {
                 dispatch(saveResponse(res.results));
-                dispatch(setTotalPages(res.total_pages))
+                dispatch(setTotalPages(res.total_pages));
+                dispatch(setPage(1));
             });
             dispatch(addSearchQuery(searchQuery));
         }
@@ -24,6 +23,10 @@ export const SearchVideoBar = ({labelText, buttonText, onClick}) => {
     function handleFormSubmit(e){
         e.preventDefault();
         e.currentTarget.elements[0].value = '';         
+    }
+
+    function setSearchQuery(value) {
+        searchQuery = value;
     }
 
     return (
