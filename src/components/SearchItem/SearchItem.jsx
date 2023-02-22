@@ -35,7 +35,7 @@ export const SearchItem = ({ title, img, year, movieId, modalSize }) => {
             const [entry] = entries;
             if (entry.isIntersecting) {
                 setSrc(realSrc);
-                // console.log(123)
+                console.log(123)
                 observer.unobserve(entry.target);
             }
         }

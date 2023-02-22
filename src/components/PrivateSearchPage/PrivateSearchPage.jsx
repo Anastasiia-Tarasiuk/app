@@ -19,11 +19,11 @@ export const PrivateSearchPage =  ({modalSize}) => {
 
     useEffect(() => {
         if (page < totalPages) {
-        setIsShown(true)
+            setIsShown(true);
         } else {
-            setIsShown(false)
-    }
-    },[page, totalPages])
+            setIsShown(false);
+        }
+    }, [page, totalPages]);
 
     const dispatch = useDispatch();
 
