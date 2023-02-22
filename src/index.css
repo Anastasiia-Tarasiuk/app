@@ -20,10 +20,15 @@ code {
 }
 
 .text {
-  display: flex;
-  justify-content: center;
-  font-size: 24px;
+  font-size: 18px;
+  text-align: center;
   font-weight: bold;
+}
+
+@media screen and (min-width: 1024px) {
+  .text {
+    font-size: 24px;
+  }
 }
 
 nav {
@@ -45,8 +50,10 @@ li {
 
 ul {
   padding: 0;
+  margin: 0;
 }
 
 a {
   text-decoration: none;
 }
+

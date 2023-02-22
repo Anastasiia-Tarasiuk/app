@@ -26,10 +26,12 @@ export const VideoItem = ({name, link, id, modalSize}) => {
     return <>
         <li>
             {name}
+            <div>
+                <ButtonComponent className="play" type="button" text="Play" onClick={handlePlayButtonClick}/>
+                <VideoItemButton className="edit" type="button" text="Edit" onClick={() => setShowModal(!showModal)}/>
+                <ModalOverlay style={modalSize} shown={showModal} close={() => setShowModal(!showModal)} content={<EditVideoModalContent name={name} link={link} id={id} close={() => setShowModal(!showModal)} />}/>
+            </div>
         </li>
-        <ButtonComponent className="play" type="button" text="Play" onClick={handlePlayButtonClick}/>
-        <VideoItemButton className="edit" type="button" text="Edit" onClick={() => setShowModal(!showModal)}/>
-        <ModalOverlay style={modalSize} shown={showModal} close={() => setShowModal(!showModal)} content={<EditVideoModalContent name={name} link={link} id={id} close={() => setShowModal(!showModal)} />}/>
     </>
 
 }

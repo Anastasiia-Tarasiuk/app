@@ -1,4 +1,4 @@
-import {Message} from "../Message";
+import {Message} from "../Message/Message";
 import { PlayerWrapper, Video, YouTube } from "./Player.styled";
 
 export const Player = ({src, name}) => {

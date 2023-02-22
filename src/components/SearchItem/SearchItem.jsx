@@ -6,7 +6,7 @@ import { Player } from "../Player/Player"
 import { useDispatch, useSelector } from "react-redux";
 import Notiflix from "notiflix";
 import { addVideo } from "../../redux/slice/videoSlice"; 
-import { Message } from "../Message";
+import { Message } from "../Message/Message";
 import { API_KEY, IMAGE_URL, BASE_URL } from "../../variables/variables";
 import defaultImage from "../../images/no-image.jpg";
 import placeholderImage from "../../images/coming-soon.webp";

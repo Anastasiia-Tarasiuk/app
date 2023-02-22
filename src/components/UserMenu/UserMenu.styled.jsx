@@ -6,9 +6,11 @@ export const Icon = styled.svg`
 
 export const Menu = styled.ul`
   position: absolute;
-  top: 40px;
-  right: 55px;
-  padding-bottom: 50px;
+  top: 41px;
+  right: 45px;
+  padding: 10px;
+  background-color: white;
+  margin: 0;
 `
 
 export const Wrapper = styled.div`

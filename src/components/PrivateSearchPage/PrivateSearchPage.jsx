@@ -1,4 +1,4 @@
-import { Message } from "../Message";
+import { Message } from "../Message/Message";
 import { SharedLayout } from "../SharedLayout/SharedLayout";
 import { SearchVideoBar } from "../SearchVideoBar/SearchVideoBar";
 import { SearchList } from "../SearchList/SearchList";

@@ -1,14 +1,29 @@
 import styled from "@emotion/styled";
 
 export const StyledSidebar = styled.div`
+
+  @media screen and (max-width: 767px){
+    width: 90%;
+    right: -83%;
+    padding: 5px;
+
+  }
+
+  @media screen and (min-width: 768px) {
+    right: -30%;
+    padding: 10px;
+  }
+
+  @media screen and (min-width: 1024px) {
+    width: 50%;
+    right: -48%;
+  }
+  
   position: absolute;
   z-index: 1;
-  right: -48%;
   transition: right 500ms;
-  width: 50%;
   height: 90%;
   background-color: gray;
-  padding: 10px;
   overflow-y: scroll;
   overflow-x: hidden;
 

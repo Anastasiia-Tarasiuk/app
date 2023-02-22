@@ -6,12 +6,12 @@ const SEARCH_URL = `${BASE_URL}search/movie`;
 export { BASE_URL, IMAGE_URL, API_KEY, SEARCH_URL };
 
 export const VIDEO_MODAL_SIZE = {
-    "320": { width: '300px', height: '350px' },
-    "768": { width: '700px', height: '600px' },
+    "320": { width: '300px', height: '300px' },
+    "768": { width: '700px', height: '500px' },
     "1024": {width: '1000px', height: '750px'},
 }
 
 export const MODAL_SIZE = {
-    "320": { width: '300px', height: '300px' },
-    "768": { width: '600px', height: '600px' },
+    "320": { width: '300px', height: '200px' },
+    "768": { width: '600px', height: '400px' },
 }

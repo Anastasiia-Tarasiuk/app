@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Notiflix from "notiflix";
 import { ButtonComponent } from "./Button"
-import { Message } from "./Message";
+import { Message } from "./Message/Message";
 import { FormInput } from "./FormInput";
 import { useDispatch, useSelector } from "react-redux";
 import { toggleLoggedInUser } from '../redux/slice/userSlice';

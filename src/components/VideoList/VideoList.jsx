@@ -1,6 +1,6 @@
 import {VideoItem} from "../VideoItem/VideoItem";
 import {useSelector} from "react-redux";
-import {Message} from "../Message";
+import {Message} from "../Message/Message";
 import {List} from "./VideoList.styled";
 
 export const VideoList = ({modalSize}) => {

@@ -1,7 +1,7 @@
-import { Message } from "../Message";
 import {LoginForm} from "../LoginForm";
 import {Link} from "react-router-dom";
-import { RegisterButton, RegisterWrapper} from "./PublicPage.styled";
+import { RegisterButton, RegisterWrapper } from "./PublicPage.styled";
+import { Message } from "../Message/Message";
 
 export const PublicPage = () => {
     return <>

@@ -1,4 +1,4 @@
-import { Message } from "../Message";
+
 import {useSelector} from "react-redux";
 import {Sidebar} from "../Sidebar/Sidebar";
 import {AddVideoBar} from "../AddVideoBar/AddVideoBar";
@@ -6,6 +6,7 @@ import {Player} from "../Player/Player";
 import {useNavigate} from "react-router-dom";
 import { SearchText, ButtonComponentWithMargin} from "./PrivateMainPage.styled";
 import { SharedLayout } from "../SharedLayout/SharedLayout";
+import { Message } from "../Message/Message";
 
 export const PrivateMainPage = ({modalSize}) => {
     const loggedInUserName = useSelector((state) => state.users.loggedInUser.name);
@@ -25,7 +26,7 @@ export const PrivateMainPage = ({modalSize}) => {
             <Sidebar modalSize={modalSize}/>
             <AddVideoBar labelText={"Set the link here"} buttonText={"Add"} />            
             <Player src={currentVideoLink} name={currentVideoName} /> 
-            <SearchText className="text">Or<ButtonComponentWithMargin className="searchButton" type="button" text="Search" onClick={handleSearchButtonClick}/>for new videos to watch</SearchText>
+            <SearchText className="text">Or<ButtonComponentWithMargin className="searchButton" type="button" text="Search" onClick={handleSearchButtonClick}/>for new videos</SearchText>
         </>
     )
 }

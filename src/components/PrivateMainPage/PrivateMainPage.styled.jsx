@@ -10,7 +10,3 @@ export const ButtonComponentWithMargin = styled(ButtonComponent)`
   margin: 0 10px;
 `
 
-// export const MainContainer = styled.div`
-//   // overflow: hidden;
-
-// `
