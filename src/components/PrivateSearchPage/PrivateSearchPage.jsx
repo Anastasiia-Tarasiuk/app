@@ -7,7 +7,7 @@ import { ButtonComponent } from "../Button";
 import { useDispatch } from "react-redux";
 import { apiSearch } from "../../apiSearch/apiSearch";
 import { saveResponse, setPage } from "../../redux/slice/searchSlice";
-// import { useState } from "react";
+import { useEffect, useState } from "react";
 
 export const PrivateSearchPage =  ({modalSize}) => {
     const response = useSelector((state) => state.search.response);
@@ -15,14 +15,15 @@ export const PrivateSearchPage =  ({modalSize}) => {
     const totalPages = useSelector((state) => state.search.totalPages);
     let page = useSelector((state) => state.search.page);
 
-    // const [isShown, setIsShown] = useState(false);
-    // console.log(page)
-    // console.log(totalPages)
-    // // if (page + 1 <= totalPages) {
-    // //     setIsShown(true)
-    // // }
+    const [isShown, setIsShown] = useState(false);
 
-    // console.log(isShown)
+    useEffect(() => {
+        if (page < totalPages) {
+        setIsShown(true)
+        } else {
+            setIsShown(false)
+    }
+    },[page, totalPages])
 
     const dispatch = useDispatch();
 
@@ -30,7 +31,6 @@ export const PrivateSearchPage =  ({modalSize}) => {
         page = page + 1;
         dispatch(setPage(page));
         apiSearch(searchQuery, page).then(res => {
-            // console.log(res)
             dispatch(saveResponse(res.results));
         });
     }
@@ -41,7 +41,7 @@ export const PrivateSearchPage =  ({modalSize}) => {
             <Message text={"Search for videos"} />     
             <SearchVideoBar labelText={"Type here"} buttonText={"Search"} />
             {response && <SearchList items={response} />}
-            <ButtonComponent text={"Next page"} onClick={onNextPageButtonClick} />
+            {isShown && <ButtonComponent text={"Next page"} onClick={onNextPageButtonClick} />}
         </div>
     )
 }
