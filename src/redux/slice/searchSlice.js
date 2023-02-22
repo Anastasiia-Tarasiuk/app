@@ -19,15 +19,12 @@ export const searchSlice = createSlice({
             state.searchKey = action.payload;
         },
         saveResponse: (state, action) => {
-            // console.log(action.payload)
             state.response = action.payload;
         },
         setTotalPages:(state, action) => {
-            // console.log(action.payload)
             state.totalPages = action.payload;
         },
         setPage:(state, action) => {
-            // console.log(action.payload)
             state.page = action.payload;
         },
         // toggleLoggedInUser: (state, action) => {

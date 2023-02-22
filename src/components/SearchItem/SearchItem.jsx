@@ -98,7 +98,6 @@ export const SearchItem = ({ title, img, year, movieId, modalSize }) => {
             }
             setShowModal(!showModal);
         }
-
     }
 
     function addVideoToFavourites() {
