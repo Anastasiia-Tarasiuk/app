@@ -17,15 +17,21 @@ export const SharedLayout = ({modalSize}) => {
         navigate("../");
         dispatch(toggleLoggedInUser( null ));
         dispatch(getCurrentVideo({}));
+        resetSearchSliceValues();
+    }
+
+    function handleBackButtonClick() {
+        navigate("../main");
+        resetSearchSliceValues();    
+    }
+
+
+    function resetSearchSliceValues() {
         dispatch(addSearchQuery(null));
         dispatch(addSearchKey(null));
         dispatch(saveResponse(null));
         dispatch(setTotalPages(null));
         dispatch(setPage(null));
-    }
-
-    function handleBackButtonClick() {
-        navigate("../main");
     }
 
     return <UserMenuWrapper>

@@ -7,6 +7,8 @@ import {useNavigate} from "react-router-dom";
 import { SearchText, ButtonComponentWithMargin} from "./PrivateMainPage.styled";
 import { SharedLayout } from "../SharedLayout/SharedLayout";
 import { Message } from "../Message/Message";
+import { getCurrentVideo } from "../../redux/slice/videoSlice";
+import { useDispatch } from "react-redux";
 
 export const PrivateMainPage = ({modalSize}) => {
     const loggedInUserName = useSelector((state) => state.users.loggedInUser.name);
@@ -14,9 +16,12 @@ export const PrivateMainPage = ({modalSize}) => {
     const currentVideoName = useSelector((state) => state.videos.currentVideo).videoName;
 
     const navigate = useNavigate();
+    const dispatch = useDispatch();
 
     function handleSearchButtonClick() {
         navigate("../search");
+        dispatch(getCurrentVideo({}));
+
     }
 
     return (
