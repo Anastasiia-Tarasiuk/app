@@ -3,8 +3,10 @@ import {useDispatch} from "react-redux";
 import {addSearchQuery, saveResponse, setPage, setTotalPages} from "../../redux/slice/searchSlice";
 import { AddVideoForm, SearchVideoButton } from "../SearchVideoBar/SearchVideoBar.styled";
 import { apiSearch } from "../../apiSearch/apiSearch";
+import Notiflix from "notiflix";
 
-export const SearchVideoBar = ({labelText, buttonText}) => {
+export const SearchVideoBar = ({ labelText, buttonText }) => {
+
     let searchQuery = "";
 
     const dispatch = useDispatch();
@@ -12,9 +14,16 @@ export const SearchVideoBar = ({labelText, buttonText}) => {
     function handleButtonClick(e){
         if (e.target.form[0].value !== '') {
             apiSearch(searchQuery, 1).then(res => {
-                dispatch(saveResponse(res.results));
-                dispatch(setTotalPages(res.total_pages));
-                dispatch(setPage(1));
+                if (res.results.length <= 0) { 
+                    dispatch(saveResponse(null));
+                    dispatch(setTotalPages(null));
+                    dispatch(setPage(null));
+                    Notiflix.Notify.failure(`No much for ${searchQuery}`);
+                } else {
+                    dispatch(saveResponse(res.results));
+                    dispatch(setTotalPages(res.total_pages));
+                    dispatch(setPage(1));
+                }
             });
             dispatch(addSearchQuery(searchQuery));
         }

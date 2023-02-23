@@ -7,6 +7,7 @@ import { ButtonComponent } from "../Button";
 import { useDispatch } from "react-redux";
 import { apiSearch } from "../../apiSearch/apiSearch";
 import { saveResponse, setPage } from "../../redux/slice/searchSlice";
+import { useRef } from "react";
 // import { useEffect, useState } from "react";
 
 export const PrivateSearchPage =  ({modalSize}) => {
@@ -14,7 +15,10 @@ export const PrivateSearchPage =  ({modalSize}) => {
     const searchQuery = useSelector((state) => state.search.searchQuery);
     const totalPages = useSelector((state) => state.search.totalPages);
     let page = useSelector((state) => state.search.page);
-    console.log(response)
+
+    // console.log(response)
+
+    const refScrollUp = useRef();
 
     // Подвійний ререндер через response 
 
@@ -30,24 +34,28 @@ export const PrivateSearchPage =  ({modalSize}) => {
     //     }
     // }, [page, totalPages]);
 
-
     function onNextPageButtonClick() {
-        page = page + 1;
-        dispatch(setPage(page));
-        apiSearch(searchQuery, page).then(res => {
-            dispatch(saveResponse(res.results));
-        });
+        scrollToTop();
+        setTimeout(() => {
+            page = page + 1;
+            dispatch(setPage(page));
+            apiSearch(searchQuery, page).then(res => {
+                dispatch(saveResponse(res.results));
+            })
+        }, 1000);
     }
 
-    console.log('search')
-
+    function scrollToTop() {
+        refScrollUp.current.scrollIntoView({ behavior: "smooth" });
+    };
+ 
     return (
-        <>
+        <div ref={refScrollUp}>
             <SharedLayout modalSize={modalSize}/>
             <Message text={"Search for videos"} />     
             <SearchVideoBar labelText={"Type here"} buttonText={"Search"} />
             {response ? <SearchList items={response} /> : <Message text={"Type something to search for video"}/>}
             {page < totalPages && <ButtonComponent text={"Next page"} onClick={onNextPageButtonClick} />}
-        </>
+        </div>
     )
 }
