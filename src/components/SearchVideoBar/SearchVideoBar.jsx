@@ -6,12 +6,12 @@ import { apiSearch } from "../../apiSearch/apiSearch";
 
 export const SearchVideoBar = ({labelText, buttonText}) => {
     let searchQuery = "";
- 
+
     const dispatch = useDispatch();
 
-    async function handleButtonClick(e){
+    function handleButtonClick(e){
         if (e.target.form[0].value !== '') {
-            await apiSearch(searchQuery, 1).then(res => {
+            apiSearch(searchQuery, 1).then(res => {
                 dispatch(saveResponse(res.results));
                 dispatch(setTotalPages(res.total_pages));
                 dispatch(setPage(1));

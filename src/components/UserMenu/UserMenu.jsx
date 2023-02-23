@@ -5,7 +5,6 @@ import {RenameUserModalContent} from "../RenameUserModalContent/RenameUserModalC
 import {SettingsModalContent} from "../SettingsModalContent/SettingsModalContent";
 import { ModalOverlay } from "../ModalOverlay/ModalOverlay";
 
-
 export const UserMenu = ({modalSize}) => {
     const [isShown, setIsShown] = useState(false);
     const [showModal, setShowModal] = useState(false);

@@ -110,7 +110,7 @@ export const SearchItem = ({ title, img, year, movieId, modalSize }) => {
         if (correctYouTubeLink) {
             return <ModalContentWrapper>
                 <Player src={link} name={`${title + ", " + year}`} close={() => setShowModal(!showModal)} />
-                <AddButton className="AddVideoToFavouriteButton" type="button" text={"Add to list"} onClick={e => addVideoToFavourites(e)} />
+                <AddButton id="addButton" aria-label="add video to favourites" type="button" text={"Add to list"} onClick={e => addVideoToFavourites(e)} />
             </ModalContentWrapper>
         } else {
             return <Message text={"Sorry, here is no video"} />

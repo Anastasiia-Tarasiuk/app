@@ -27,23 +27,6 @@ export const searchSlice = createSlice({
         setPage:(state, action) => {
             state.page = action.payload;
         },
-        // toggleLoggedInUser: (state, action) => {
-        //     // state.loggedInUser = action.payload;
-        // },
-        // editUser: (state, action) => {
-        //     // if (state.loggedInUser.name !== action.payload) {
-        //     //     state.loggedInUser.name = action.payload;
-        //     //     state.allUsers.forEach(user => {
-        //     //         if (user.id === state.loggedInUser.id) {
-        //     //             user.name = action.payload;
-        //     //         }
-        //     //     })
-        //     // }
-        // },
-        // deleteUser: (state, action) => {
-        //     // state.allUsers = state.allUsers.filter(user => user.id !== action.payload);
-        //     // state.loggedInUser = null;
-        // }
     },
 })
 
