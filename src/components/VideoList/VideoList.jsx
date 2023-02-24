@@ -3,7 +3,7 @@ import {useSelector} from "react-redux";
 import {Message} from "../Message/Message";
 import {List} from "./VideoList.styled";
 
-export const VideoList = ({modalSize}) => {
+export const VideoList = ({modalSize, onClick}) => {
     const allVideosList = useSelector((state) => state.videos.allVideos);
     const loggedInUserId = useSelector((state) => state.users.loggedInUser.id);
 
@@ -21,7 +21,7 @@ export const VideoList = ({modalSize}) => {
         {
             loggedInUserVideoList.length > 0
                 ? <List>
-                    {loggedInUserVideoList.map(video => <VideoItem modalSize={modalSize} key={video.videoId} name={video.videoName} link={video.videoLink} id={video.videoId}/>)}
+                    {loggedInUserVideoList.map(video => <VideoItem onClick={onClick} modalSize={modalSize} key={video.videoId} name={video.videoName} link={video.videoLink} id={video.videoId}/>)}
                 </List>
                 : <Message text={'Your playlist is empty. Add some links'}/>
         }

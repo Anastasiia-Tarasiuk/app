@@ -7,7 +7,7 @@ import {useNavigate} from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { UserMenuWrapper} from "./SharedLayout.styled";
 
-export const SharedLayout = ({modalSize}) => {
+export const SharedLayout = ({modalSize, onClick}) => {
     const href = window.location.pathname;
 
     const navigate = useNavigate();
@@ -36,7 +36,7 @@ export const SharedLayout = ({modalSize}) => {
 
     return <UserMenuWrapper>
                 {(href === "/search") && <ButtonComponent className="backToMainButton" type="button" text="Back" onClick={handleBackButtonClick} />}
-                <UserMenu modalSize={modalSize}/> 
+                <UserMenu onClick={onClick} modalSize={modalSize}/> 
                 <ButtonComponent className="logoutButton" type="button" text="Logout" onClick={handleButtonClick} />
             </UserMenuWrapper>
 

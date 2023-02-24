@@ -8,7 +8,7 @@ import {EditVideoModalContent} from "../EditVideoModalContent/EditVideoModalCont
 import Notiflix from "notiflix";
 
 
-export const VideoItem = ({name, link, id, modalSize}) => {
+export const VideoItem = ({name, link, id, modalSize, onClick}) => {
     const [showModal, setShowModal] = useState(false);
 
     const dispatch = useDispatch();
@@ -23,15 +23,17 @@ export const VideoItem = ({name, link, id, modalSize}) => {
         }
     }
 
-    return <>
-        <li>
-            {name}
-            <div>
-                <ButtonComponent className="play" type="button" text="Play" onClick={handlePlayButtonClick}/>
-                <VideoItemButton className="edit" type="button" text="Edit" onClick={() => setShowModal(!showModal)}/>
-                <ModalOverlay style={modalSize} shown={showModal} close={() => setShowModal(!showModal)} content={<EditVideoModalContent name={name} link={link} id={id} close={() => setShowModal(!showModal)} />}/>
-            </div>
-        </li>
-    </>
+    function isShowingModal() {
+        setShowModal(!showModal);
+        onClick();
+    }
 
+    return <li>
+                {name}
+                <div>
+                    <ButtonComponent className="play" type="button" text="Play" onClick={handlePlayButtonClick}/>
+                    <VideoItemButton className="edit" type="button" text="Edit" onClick={() => isShowingModal()}/>
+                    <ModalOverlay  style={modalSize} shown={showModal} close={() => setShowModal(!showModal)} content={<EditVideoModalContent name={name} link={link} id={id} close={() => setShowModal(!showModal)} />}/>
+                </div>
+            </li>
 }
