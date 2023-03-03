@@ -10,15 +10,11 @@ import { Message } from "../Message/Message";
 import { getCurrentVideo } from "../../redux/slice/videoSlice";
 import { useDispatch } from "react-redux";
 import { createRef } from "react";
-import { useState } from "react";
 
 export const PrivateMainPage = ({modalSize}) => {
     const loggedInUserName = useSelector((state) => state.users.loggedInUser.name);
     const currentVideoLink = useSelector((state) => state.videos.currentVideo).videoLink;
     const currentVideoName = useSelector((state) => state.videos.currentVideo).videoName;
-    // const [isModalShown, setIsModalShown] = useState(false);
-
-
 
     const navigate = useNavigate();
     const dispatch = useDispatch();
@@ -30,12 +26,30 @@ export const PrivateMainPage = ({modalSize}) => {
         dispatch(getCurrentVideo({}));
     }
 
-  
-
-    function onModalShow(e) {
-        // console.log("modal", e.target);
+    function onModalShow() {
         ref.current.pause();
+        // stopVideo()
     }
+
+//     function stopVideo() {
+//         const iframe = document.querySelector("iframe");
+//         const video = document.querySelector('video');
+        
+//         if (iframe) {
+//             console.log(iframe)
+//             // iframe.contentWindow.TSC.mediaInterface.pause(); 
+//             //
+//             // iframe.contentWindow.postMessage( '{"event":"command", "func":"pauseVideo", "args":""}', '*');
+// iframe.pauseVideo();
+     
+
+//         }
+//         if (video) {
+//             video.pause();
+//         }
+//     };
+    
+     
 
     // function modalСlosed(e) {
     //     // isModalShown(false);
@@ -43,8 +57,7 @@ export const PrivateMainPage = ({modalSize}) => {
     //     ref.current.play();
     // }
     
-    return (
-        <>
+    return <>
             <SharedLayout modalSize={modalSize} onClick={e=> onModalShow(e)} />
             <Message text={"Welcome to your playlist, " + loggedInUserName} />
             <Sidebar modalSize={modalSize} onClick={e=> onModalShow(e)}/>
@@ -52,5 +65,4 @@ export const PrivateMainPage = ({modalSize}) => {
             <Player ref={ref} src={currentVideoLink} name={currentVideoName} /> 
             <SearchText className="text">Or<ButtonComponentWithMargin className="searchButton" type="button" text="Search" onClick={handleSearchButtonClick}/>for new videos</SearchText>
         </>
-    )
 }
