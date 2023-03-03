@@ -37,7 +37,7 @@ export const RegisterForm = () => {
             const hashedPassword = bcrypt.hashSync(password, bcrypt.genSaltSync(6));
             const id = Math.random().toString(36).slice(-6);
             dispatch(addUser({ id, name, email: email.trim(), password: hashedPassword }));
-            navigate("../login");
+            navigate("../");
         }
     }
 
