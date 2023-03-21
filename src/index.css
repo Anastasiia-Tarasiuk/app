@@ -5,7 +5,6 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  padding: 10px;
   padding: 0;
   position: relative;
 }
@@ -51,4 +50,13 @@ ul {
 
 a {
   text-decoration: none;
+  color: inherit;
+}
+
+a:hover{
+  color: inherit;
+}
+
+.active {
+  color: red;
 }

@@ -3,12 +3,13 @@ import { SharedLayout } from "../../components/SharedLayout/SharedLayout";
 import { SearchVideoBar } from "../../components/SearchVideoBar/SearchVideoBar";
 import { SearchList } from "../../components/SearchList/SearchList";
 import { useSelector } from "react-redux";
-import { ButtonComponent } from "../../components/Button";
 import { useDispatch } from "react-redux";
 import { apiSearch } from "../../apiSearch/apiSearch";
 import { saveResponse, setPage } from "../../redux/slice/searchSlice";
 import { useRef } from "react";
-// import { useEffect, useState } from "react";
+import {NextPageButton} from "./PrivateSearchPage.styled";
+import {Footer} from "../../components/Footer/Footer";
+import {Container} from "../../components/Container/Container";
 
 export const PrivateSearchPage =  ({modalSize}) => {
     const response = useSelector((state) => state.search.response);
@@ -52,10 +53,13 @@ export const PrivateSearchPage =  ({modalSize}) => {
     return (
         <div ref={refScrollUp}>
             <SharedLayout modalSize={modalSize}/>
-            <Message text={"Search for videos"} />     
-            <SearchVideoBar labelText={"Type here"} buttonText={"Search"} />
-            {response ? <SearchList items={response} /> : <Message text={"Type something to search for video"}/>}
-            {page < totalPages && <ButtonComponent text={"Next page"} onClick={onNextPageButtonClick} />}
+            <Container>
+                <Message text={"Search for videos"} />
+                <SearchVideoBar labelText={"Type here"} buttonText={"Search"} />
+                {response ? <SearchList items={response} /> : <Message text={"Type something to search for video"}/>}
+                {page < totalPages && <NextPageButton text={"Next page"} onClick={onNextPageButtonClick} />}
+            </Container>
+            <Footer/>
         </div>
     )
 }

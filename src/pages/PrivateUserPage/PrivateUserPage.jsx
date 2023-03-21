@@ -7,7 +7,9 @@ import {useState} from "react";
 import {ModalOverlay} from "../../components/ModalOverlay/ModalOverlay";
 import {RenameUserModalContent} from "../../components/RenameUserModalContent/RenameUserModalContent";
 import {SettingsModalContent} from "../../components/SettingsModalContent/SettingsModalContent";
-import {UserWrapper, RenameUserButton} from "./PrivateUserPage.styled";
+import {RenameUserButton} from "./PrivateUserPage.styled";
+import {Footer} from "../../components/Footer/Footer";
+import {Container} from "../../components/Container/Container";
 
 export const PrivateUserPage = ({modalSize, onClick}) => {
     const loggedInUserName = useSelector((state) => state.users.loggedInUser.name);
@@ -27,7 +29,7 @@ export const PrivateUserPage = ({modalSize, onClick}) => {
 
     return <>
         <SharedLayout/>
-        <UserWrapper>
+        <Container>
             <Message text={'User profile'}/>
             <img src={image} alt="User profile" width="300px"/>
             <p>{loggedInUserName}</p>
@@ -36,7 +38,8 @@ export const PrivateUserPage = ({modalSize, onClick}) => {
             <ButtonComponent className='deleteUserButton' type="button" text="Delete user" onClick={onDeleteUserButtonClick}/>
             </div>
             <ModalOverlay onClick={onClick} style={modalSize} shown={showModal} close={() => setShowModal(!showModal)} content={showRenameContent ? <RenameUserModalContent close={() => setShowModal(!showModal)} /> : <SettingsModalContent close={() => setShowModal(!showModal)} />}/>
-        </UserWrapper>
+        </Container>
+        <Footer/>
         </>
 
 }
