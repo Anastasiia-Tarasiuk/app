@@ -15,10 +15,6 @@ code {
     monospace;
 }
 
-.registerButton {
-  margin-right: 5px;
-}
-
 .text {
   font-size: 18px;
   text-align: center;
@@ -56,4 +52,3 @@ ul {
 a {
   text-decoration: none;
 }
-

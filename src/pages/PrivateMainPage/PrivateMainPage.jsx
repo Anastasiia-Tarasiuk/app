@@ -1,12 +1,12 @@
 
 import {useSelector} from "react-redux";
-import {Sidebar} from "../Sidebar/Sidebar";
-import {AddVideoBar} from "../AddVideoBar/AddVideoBar";
-import {Player} from "../Player/Player";
+import {Sidebar} from "../../components/Sidebar/Sidebar";
+import {AddVideoBar} from "../../components/AddVideoBar/AddVideoBar";
+import {Player} from "../../components/Player/Player";
 import {useNavigate} from "react-router-dom";
-import { SearchText, ButtonComponentWithMargin} from "./PrivateMainPage.styled";
-import { SharedLayout } from "../SharedLayout/SharedLayout";
-import { Message } from "../Message/Message";
+import { SearchText, SearchLink} from "./PrivateMainPage.styled";
+import { SharedLayout } from "../../components/SharedLayout/SharedLayout";
+import { Message } from "../../components/Message/Message";
 import { getCurrentVideo } from "../../redux/slice/videoSlice";
 import { useDispatch } from "react-redux";
 import { createRef } from "react";
@@ -63,6 +63,6 @@ export const PrivateMainPage = ({modalSize}) => {
             <Sidebar modalSize={modalSize} onClick={e=> onModalShow(e)}/>
             <AddVideoBar labelText={"Set the link here"} buttonText={"Add"} />            
             <Player ref={ref} src={currentVideoLink} name={currentVideoName} /> 
-            <SearchText className="text">Or<ButtonComponentWithMargin className="searchButton" type="button" text="Search" onClick={handleSearchButtonClick}/>for new videos</SearchText>
+            <SearchText className="text">Or <SearchLink onClick={handleSearchButtonClick}>Search</SearchLink> for new videos</SearchText>
         </>
 }

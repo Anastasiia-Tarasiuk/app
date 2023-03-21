@@ -7,13 +7,12 @@ const modalRoot = document.querySelector('#modal-root');
 
 export const ModalOverlay = ({ shown, close, content, style }) => {
      return shown && createPortal(
-         <Overlay onClick={close}
-         >
+         <Overlay onClick={close}>
             <Modal onClick={e=>e.stopPropagation()} style={style}>
                 <ModalContentWrapper content={content}/>
                 <ModalCloseButton onClick={close}/>
             </Modal>
         </Overlay>,
         modalRoot
-    )
+     )
 }

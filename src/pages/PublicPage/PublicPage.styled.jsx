@@ -1,5 +1,5 @@
 import styled from "@emotion/styled";
-import {ButtonComponent} from "../Button";
+import {ButtonComponent} from "../../components/Button";
 
 export const RegisterWrapper = styled.div`
   margin-top: 40px;

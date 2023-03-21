@@ -4,6 +4,7 @@ import {CancelButton} from "../ModalOverlay/ModalOverlay.styled";
 import {useState} from "react";
 import {useDispatch} from "react-redux";
 import {editUser} from "../../redux/slice/userSlice";
+import Notiflix from "notiflix";
 
 export const RenameUserModalContent = ({close}) => {
     const dispatch = useDispatch();
@@ -13,6 +14,9 @@ export const RenameUserModalContent = ({close}) => {
         if (newName !== '' ) {
             dispatch(editUser(newName));
             close();
+            Notiflix.Notify.success('User was renamed');
+        } else {
+            Notiflix.Notify.warning('Enter new name' );
         }
     }
 
@@ -21,7 +25,7 @@ export const RenameUserModalContent = ({close}) => {
     }
 
     return <>
-        <h2>{"Rename user"}</h2>
+        <h2>{"Do you want to rename user?"}</h2>
         <FormInput labelText="Enter new name" inputType="text" inputName="videoName" onChange={value => setNewName(value)} />
         <div>
             <ButtonComponent className="rename" type="button" text="Rename" onClick={handleRenameButtonClick}/>

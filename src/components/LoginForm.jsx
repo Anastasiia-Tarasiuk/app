@@ -41,9 +41,7 @@ export const LoginForm = () => {
         navigate("../main");
     }
 
-    return (
-        <>
-            {/*<Link to="/"><ButtonComponent type="button" text="Back"/></Link>*/}
+    return <>
             <Message text="Please sing in" />
             <form onSubmit={handleFormSubmit}>
                 <FormInput labelText="Email" inputType="email" inputName="email" onChange={value => setEmail(value)} controlId="emailId" />
@@ -51,5 +49,4 @@ export const LoginForm = () => {
                 <ButtonComponent className="singInButton" type="submit" text="Sign in"/>
             </form>
         </>
-    )
 }

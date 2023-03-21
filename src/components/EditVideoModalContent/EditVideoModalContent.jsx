@@ -4,6 +4,7 @@ import {CancelButton, DeleteButton} from "../ModalOverlay/ModalOverlay.styled";
 import {useState} from "react";
 import {useDispatch, useSelector} from "react-redux";
 import {deleteVideo, editVideo, getCurrentVideo} from "../../redux/slice/videoSlice";
+import Notiflix from "notiflix";
 
 export const EditVideoModalContent = ({name, link, id, close}) => {
     const dispatch = useDispatch();
@@ -18,6 +19,8 @@ export const EditVideoModalContent = ({name, link, id, close}) => {
                 dispatch(getCurrentVideo({videoName: newName, videoLink: link, videoId: id}));
             }
             close();
+        } else {
+            Notiflix.Notify.warning('Enter new name' );
         }
     }
 
@@ -25,8 +28,9 @@ export const EditVideoModalContent = ({name, link, id, close}) => {
         close();
     }
 
-    function handleDeleteButtonClick(){
+    function handleDeleteButtonClick() {
         dispatch(deleteVideo({link, id, name}));
+        Notiflix.Notify.success('Video was deleted' );
     }
 
     return <>

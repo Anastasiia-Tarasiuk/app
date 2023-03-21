@@ -4,14 +4,13 @@ export const StyledSidebar = styled.div`
 
   @media screen and (max-width: 767px){
     width: 90%;
-    right: -83%;
+    right: -81%;
     padding: 5px;
-
   }
 
   @media screen and (min-width: 768px) {
-    right: -30%;
-    padding: 10px;
+    width: 60%;
+    right: -56%;
   }
 
   @media screen and (min-width: 1024px) {
@@ -41,3 +40,4 @@ export const Icon = styled.svg`
   padding: 0;
   position: absolute;
 `
+

@@ -8,7 +8,6 @@ export const Overlay = styled.div`
   width: 100vw;
   height: 100vh;
   overflow-y: scroll;
-  background-color: transparent;
   backdrop-filter: blur(10px);
   z-index: 2;
 `

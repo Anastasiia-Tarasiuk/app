@@ -1,13 +1,14 @@
 import './App.css';
 import { Routes, Route } from "react-router-dom";
-import { RegisterForm } from './components/RegisterForm';
-import { PublicPage } from './components/PublicPage/PublicPage';
-import { PrivateMainPage } from './components/PrivateMainPage/PrivateMainPage';
+import { RegisterForm } from './components/RegisterForm/RegisterForm';
+import { PublicPage } from './pages/PublicPage/PublicPage';
+import { PrivateMainPage } from './pages/PrivateMainPage/PrivateMainPage';
 import { NotFound } from './components/NotFound';
 import PrivateRoute from './components/PrivateRoute';
 import { AppWrapper } from "./App.styled"; 
-import { PrivateSearchPage } from './components/PrivateSearchPage/PrivateSearchPage';
+import { PrivateSearchPage } from './pages/PrivateSearchPage/PrivateSearchPage';
 import { MODAL_SIZE } from './variables/variables';
+import {PrivateUserPage} from "./pages/PrivateUserPage/PrivateUserPage";
 
 function App() {
 
@@ -37,6 +38,11 @@ function App() {
       <Route path="search" element={
         <PrivateRoute>
           <PrivateSearchPage modalSize={modalWidthAndHeight}/>
+        </PrivateRoute>}
+      />
+      <Route path="user" element={
+        <PrivateRoute>
+          <PrivateUserPage modalSize={modalWidthAndHeight}  />
         </PrivateRoute>}
       />
       <Route path="*" element={<NotFound />} />      

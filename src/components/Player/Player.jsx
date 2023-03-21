@@ -26,7 +26,6 @@ export const Player = forwardRef((props, ref) => (
                 ? <YouTube ref={ref} src={props.src || ""} allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowFullScreen></YouTube>
                 : <Video ref={ref} controls src={props.src || ""} autoPlay></Video>
             }
-            
         </PlayerWrapper>
    
 ));

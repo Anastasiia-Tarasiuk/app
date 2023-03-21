@@ -7,7 +7,6 @@ import {VideoItemButton} from "./VideoItem.styled";
 import {EditVideoModalContent} from "../EditVideoModalContent/EditVideoModalContent";
 import Notiflix from "notiflix";
 
-
 export const VideoItem = ({name, link, id, modalSize, onClick}) => {
     const [showModal, setShowModal] = useState(false);
 

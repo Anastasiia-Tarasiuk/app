@@ -8,6 +8,7 @@ export const VideoList = ({modalSize, onClick}) => {
     const loggedInUserId = useSelector((state) => state.users.loggedInUser.id);
 
     const loggedInUserVideoList = [];
+
     if (allVideosList.length > 0) {
         allVideosList.forEach(video => {
             if (video.loggedInUserId === loggedInUserId) {
@@ -17,7 +18,7 @@ export const VideoList = ({modalSize, onClick}) => {
     }
 
     return <>
-        <Message text={'Manage your play list'}/>
+        <Message text={'Manage your playlist'}/>
         {
             loggedInUserVideoList.length > 0
                 ? <List>

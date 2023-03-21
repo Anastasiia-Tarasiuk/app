@@ -1,9 +1,9 @@
-import { Message } from "../Message/Message";
-import { SharedLayout } from "../SharedLayout/SharedLayout";
-import { SearchVideoBar } from "../SearchVideoBar/SearchVideoBar";
-import { SearchList } from "../SearchList/SearchList";
+import { Message } from "../../components/Message/Message";
+import { SharedLayout } from "../../components/SharedLayout/SharedLayout";
+import { SearchVideoBar } from "../../components/SearchVideoBar/SearchVideoBar";
+import { SearchList } from "../../components/SearchList/SearchList";
 import { useSelector } from "react-redux";
-import { ButtonComponent } from "../Button";
+import { ButtonComponent } from "../../components/Button";
 import { useDispatch } from "react-redux";
 import { apiSearch } from "../../apiSearch/apiSearch";
 import { saveResponse, setPage } from "../../redux/slice/searchSlice";
@@ -47,7 +47,7 @@ export const PrivateSearchPage =  ({modalSize}) => {
 
     function scrollToTop() {
         refScrollUp.current.scrollIntoView({ behavior: "smooth" });
-    };
+    }
  
     return (
         <div ref={refScrollUp}>

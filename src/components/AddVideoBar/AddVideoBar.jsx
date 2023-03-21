@@ -8,11 +8,23 @@ import Notiflix from "notiflix";
 export const AddVideoBar = ({labelText, buttonText}) => {
     const [videoLink, setVideoLink] = useState('');
     const loggedInUserId = useSelector((state) => state.users.loggedInUser.id);
+    const allVideos = useSelector((state) => state.videos.allVideos);
 
     const dispatch = useDispatch();
 
     function handleButtonClick(e){
         if (e.target.form[0].value !== '') {
+            const thisUserVideos = allVideos.filter(video =>  video.loggedInUserId === loggedInUserId);
+
+            for (const video of thisUserVideos) {
+                if (video.videoLink !== videoLink) {
+                    continue;
+                } else {
+                    Notiflix.Notify.failure(`This video is already in your playlist with name ${video.videoName}`);
+                    return;
+                }
+            }
+
             dispatch(addVideo({loggedInUserId, videoName: Date.now(), videoLink, videoId: Date.now()}));
             Notiflix.Notify.success('Video was added successfully');
         }
@@ -23,10 +35,8 @@ export const AddVideoBar = ({labelText, buttonText}) => {
         e.currentTarget.elements[0].value = '';
     }
 
-    return (
-        <AddVideoForm onSubmit={handleFormSubmit}>
+    return <AddVideoForm onSubmit={handleFormSubmit}>
             <FormInput labelText={labelText} inputType="text" inputName="videoLink" onChange={value => setVideoLink(value)} />
             <AddVideoButton className="AddVideoButton" type="submit" text={buttonText} onClick={e => handleButtonClick(e)}/>
         </AddVideoForm>
-    )
 }
