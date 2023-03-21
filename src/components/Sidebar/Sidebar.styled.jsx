@@ -5,7 +5,6 @@ export const StyledSidebar = styled.div`
   @media screen and (max-width: 767px){
     width: 90%;
     right: -81%;
-    padding: 5px;
   }
 
   @media screen and (min-width: 768px) {
@@ -19,9 +18,10 @@ export const StyledSidebar = styled.div`
   }
   
   position: absolute;
+  top: 0;
   z-index: 1;
   transition: right 500ms;
-  height: 88%;
+  height: 100%;
   background-color: gray;
   overflow-y: scroll;
   overflow-x: hidden;
