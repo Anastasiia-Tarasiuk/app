@@ -17,7 +17,7 @@ export const Video = styled.video`
   
   @media screen and (min-width: 1024px) {
     width: 950px;
-    height: 550px;
+    height: 540px;
   }
 `
 
@@ -32,6 +32,6 @@ export const YouTube = styled.iframe`
   
   @media screen and (min-width: 1024px) {
     width: 950px;
-    height: 550px;
+    height: 540px;
   }
 `

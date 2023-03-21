@@ -21,7 +21,7 @@ export const StyledSidebar = styled.div`
   position: absolute;
   z-index: 1;
   transition: right 500ms;
-  height: 90%;
+  height: 88%;
   background-color: gray;
   overflow-y: scroll;
   overflow-x: hidden;
