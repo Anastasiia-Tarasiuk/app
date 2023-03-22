@@ -4,7 +4,7 @@ import {ButtonComponent} from "../Button";
 export const HeaderWrapper = styled.header`
   display: flex;
   padding: 10px 20px;
-  box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px, rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
+  box-shadow: rgba(14, 30, 37, 0.12) 0 2px 4px 0, rgba(14, 30, 37, 0.32) 0 2px 16px 0;
 
   div {
     margin-left: auto;
