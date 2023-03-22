@@ -58,11 +58,11 @@ export const PrivateMainPage = ({modalSize}) => {
     // }
     
     return <Container>
-                <Message text={"Welcome to your playlist, " + loggedInUserName} />
-                <Sidebar modalSize={modalSize} onClick={e=> onModalShow(e)}/>
-                <AddVideoBar labelText={"Set the link here"} buttonText={"Add"} />
-                <Player ref={ref} src={currentVideoLink} name={currentVideoName} />
-                <SearchText className="text">Or <SearchLink onClick={handleSearchButtonClick}>Search</SearchLink> for new videos</SearchText>
-            </Container>
+        <Message text={"Welcome to your playlist, " + loggedInUserName} />
+        <Sidebar modalSize={modalSize} onClick={e=> onModalShow(e)}/>
+        <AddVideoBar labelText={"Set the link here"} buttonText={"Add"} />
+        <Player ref={ref} src={currentVideoLink} name={currentVideoName} />
+        <SearchText className="text">Or <SearchLink onClick={handleSearchButtonClick}>Search</SearchLink> for new videos</SearchText>
+    </Container>
 
 }
