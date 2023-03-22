@@ -1,6 +1,7 @@
 import styled from "@emotion/styled";
 
 export const StyledSidebar = styled.div`
+  padding: 10px;
 
   @media screen and (max-width: 767px){
     width: 90%;
@@ -40,4 +41,3 @@ export const Icon = styled.svg`
   padding: 0;
   position: absolute;
 `
-

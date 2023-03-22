@@ -22,7 +22,7 @@ export const Video = styled.video`
 `
 
 export const YouTube = styled.iframe`
-   width: 270px;
+  width: 270px;
   height: 150px;
 
   @media screen and (min-width: 768px) {
