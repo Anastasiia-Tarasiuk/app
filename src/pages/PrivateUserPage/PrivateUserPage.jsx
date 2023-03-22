@@ -1,4 +1,3 @@
-import {SharedLayout} from "../../components/SharedLayout/SharedLayout";
 import image from '../../images/no-image.jpg';
 import {Message} from "../../components/Message/Message";
 import {useSelector} from "react-redux";
@@ -8,7 +7,6 @@ import {ModalOverlay} from "../../components/ModalOverlay/ModalOverlay";
 import {RenameUserModalContent} from "../../components/RenameUserModalContent/RenameUserModalContent";
 import {SettingsModalContent} from "../../components/SettingsModalContent/SettingsModalContent";
 import {RenameUserButton} from "./PrivateUserPage.styled";
-import {Footer} from "../../components/Footer/Footer";
 import {Container} from "../../components/Container/Container";
 
 export const PrivateUserPage = ({modalSize, onClick}) => {
@@ -27,9 +25,7 @@ export const PrivateUserPage = ({modalSize, onClick}) => {
     }
 
 
-    return <>
-        <SharedLayout/>
-        <Container>
+    return <Container>
             <Message text={'User profile'}/>
             <img src={image} alt="User profile" width="300px"/>
             <p>{loggedInUserName}</p>
@@ -39,7 +35,4 @@ export const PrivateUserPage = ({modalSize, onClick}) => {
             </div>
             <ModalOverlay onClick={onClick} style={modalSize} shown={showModal} close={() => setShowModal(!showModal)} content={showRenameContent ? <RenameUserModalContent close={() => setShowModal(!showModal)} /> : <SettingsModalContent close={() => setShowModal(!showModal)} />}/>
         </Container>
-        <Footer/>
-        </>
-
 }

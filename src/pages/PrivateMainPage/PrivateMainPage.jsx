@@ -5,13 +5,11 @@ import {AddVideoBar} from "../../components/AddVideoBar/AddVideoBar";
 import {Player} from "../../components/Player/Player";
 import {useNavigate} from "react-router-dom";
 import { SearchText, SearchLink} from "./PrivateMainPage.styled";
-import { SharedLayout } from "../../components/SharedLayout/SharedLayout";
 import { Message } from "../../components/Message/Message";
 import { getCurrentVideo } from "../../redux/slice/videoSlice";
 import { useDispatch } from "react-redux";
 import { createRef } from "react";
 import {Container} from "../../components/Container/Container";
-import {Footer} from "../../components/Footer/Footer";
 
 export const PrivateMainPage = ({modalSize}) => {
     const loggedInUserName = useSelector((state) => state.users.loggedInUser.name);
@@ -59,15 +57,12 @@ export const PrivateMainPage = ({modalSize}) => {
     //     ref.current.play();
     // }
     
-    return <>
-            <SharedLayout modalSize={modalSize} onClick={e=> onModalShow(e)} />
-            <Container>
+    return <Container>
                 <Message text={"Welcome to your playlist, " + loggedInUserName} />
                 <Sidebar modalSize={modalSize} onClick={e=> onModalShow(e)}/>
                 <AddVideoBar labelText={"Set the link here"} buttonText={"Add"} />
                 <Player ref={ref} src={currentVideoLink} name={currentVideoName} />
                 <SearchText className="text">Or <SearchLink onClick={handleSearchButtonClick}>Search</SearchLink> for new videos</SearchText>
             </Container>
-            <Footer/>
-        </>
+
 }
