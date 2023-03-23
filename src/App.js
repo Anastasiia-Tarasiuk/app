@@ -7,25 +7,10 @@ import { NotFound } from './components/NotFound';
 import PrivateRoute from './components/PrivateRoute';
 import { AppWrapper } from "./App.styled"; 
 import { PrivateSearchPage } from './pages/PrivateSearchPage/PrivateSearchPage';
-import { MODAL_SIZE } from './variables/variables';
 import {PrivateUserPage} from "./pages/PrivateUserPage/PrivateUserPage";
 import {SharedLayout} from "./components/SharedLayout/SharedLayout";
 
 function App() {
-
-  let modalWidthAndHeight = null;
-
-  function setModalSize(modalSize) {
-    const screenWidth = window.innerWidth;
-    const keys = Object.keys(modalSize);
-    for (const key of keys) {
-      if (key <= screenWidth) {
-        modalWidthAndHeight = modalSize[key];
-      }
-    }
-  }
-
-  setModalSize(MODAL_SIZE);
 
   return <AppWrapper>
     <Routes>
@@ -34,17 +19,17 @@ function App() {
       <Route  path="/" element={<SharedLayout/>}>
         <Route path="main" element={
           <PrivateRoute>
-            <PrivateMainPage modalSize={modalWidthAndHeight} />
+            <PrivateMainPage/>
           </PrivateRoute>}
         />
         <Route path="search" element={
           <PrivateRoute>
-            <PrivateSearchPage modalSize={modalWidthAndHeight}/>
+            <PrivateSearchPage/>
           </PrivateRoute>}
         />
         <Route path="user" element={
           <PrivateRoute>
-            <PrivateUserPage modalSize={modalWidthAndHeight}  />
+            <PrivateUserPage/>
           </PrivateRoute>}
         />
       </Route>

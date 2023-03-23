@@ -6,12 +6,19 @@ export const StyledSidebar = styled.div`
   z-index: 1;
   background-color: gray;
   overflow-y: scroll;
-  overflow-x: hidden;
-  bottom: 0;
+  bottom: -310px;
+  transition: bottom 500ms;
   width: 100%;
-  height: 250px;
-  
+  height: 350px;
+
+  &:hover,
+  &:focus {
+    bottom: 0;
+    transition: bottom 500ms;
+  }
+ 
   @media screen and (min-width: 768px) {
+    padding: 10px;
     width: 470px;
     right: -430px;
     top: 0;
@@ -34,7 +41,11 @@ export const StyledSidebar = styled.div`
 export const Icon = styled.svg`
   width: 25px;
   fill: #ffc107;
-  transform: rotate(180deg);
+  transform: rotate(-90deg);
   padding: 0;
   position: absolute;
+
+  @media screen and (min-width: 768px) {
+    transform: rotate(180deg);
+  }
 `

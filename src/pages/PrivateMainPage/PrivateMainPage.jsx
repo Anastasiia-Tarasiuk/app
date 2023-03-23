@@ -56,7 +56,7 @@ export const PrivateMainPage = ({modalSize}) => {
     //     console.log("modal", e.target);
     //     ref.current.play();
     // }
-    
+
     return <Container>
         <Message text={"Welcome to your playlist, " + loggedInUserName} />
         <Sidebar modalSize={modalSize} onClick={e=> onModalShow(e)}/>

@@ -12,7 +12,7 @@ import defaultImage from "../../images/no-image.jpg";
 import placeholderImage from "../../images/coming-soon.webp";
 import { useRef } from "react";
 
-export const SearchItem = ({ title, img, year, movieId, modalSize }) => {
+export const SearchItem = ({ title, img, year, movieId }) => {
     const [showModal, setShowModal] = useState(false);
     const loggedInUserId = useSelector((state) => state.users.loggedInUser.id);
     const [showTooltip, setShowTooltip] = useState(false);
@@ -23,7 +23,6 @@ export const SearchItem = ({ title, img, year, movieId, modalSize }) => {
     const realSrc = img ? `${IMAGE_URL + img}` : defaultImage;
 
     let correctYouTubeLink = null;
-    let modalWidthAndHeight = null;
 
     const videoKeyForYouTube = useSelector((state) => state.search.searchKey);
     
@@ -63,18 +62,6 @@ export const SearchItem = ({ title, img, year, movieId, modalSize }) => {
     },[imageRef, realSrc])
 
     const dispatch = useDispatch();
-  
-    function setModalSize(modalSize) {
-        const screenWidth = window.innerWidth;
-        const keys = Object.keys(modalSize);
-        for (const key of keys) {
-            if (key <= screenWidth) {
-                modalWidthAndHeight = modalSize[key];
-            }
-        }
-    }
-
-    setModalSize(modalSize); 
 
     function onPlayButtonClick() {
         const movieLink = `${BASE_URL}/movie/${movieId}/videos?api_key=${API_KEY}&language=en-US`;
@@ -155,7 +142,6 @@ export const SearchItem = ({ title, img, year, movieId, modalSize }) => {
             {showTooltip && <Tooltip>{title}</Tooltip>}
         </TitleWrapper>
         <ModalOverlay
-            style={modalWidthAndHeight}
             shown={showModal}
             close={() => setShowModal(!showModal)}
             content={renderModalContent(correctYouTubeLink)}

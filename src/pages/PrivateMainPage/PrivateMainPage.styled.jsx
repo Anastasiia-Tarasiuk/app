@@ -1,7 +1,7 @@
 import styled from "@emotion/styled";
 
 export const SearchText = styled.p`
-  margin-top: 40px;
+  margin-top: 20px;
   text-align: center;
   margin-bottom: 0;
 `
