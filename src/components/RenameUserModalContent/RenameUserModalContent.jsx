@@ -5,6 +5,7 @@ import {useState} from "react";
 import {useDispatch} from "react-redux";
 import {editUser} from "../../redux/slice/userSlice";
 import Notiflix from "notiflix";
+import {ModalTitle} from "../EditVideoModalContent/EditVideoModalContent.styled";
 
 export const RenameUserModalContent = ({close}) => {
     const dispatch = useDispatch();
@@ -25,7 +26,7 @@ export const RenameUserModalContent = ({close}) => {
     }
 
     return <>
-        <h2>{"Do you want to rename user?"}</h2>
+        <ModalTitle>{"Do you want to rename user?"}</ModalTitle>
         <FormInput labelText="Enter new name" inputType="text" inputName="videoName" onChange={value => setNewName(value)} />
         <div>
             <ButtonComponent className="rename" type="button" text="Rename" onClick={handleRenameButtonClick}/>

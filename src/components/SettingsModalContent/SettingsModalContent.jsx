@@ -4,6 +4,7 @@ import {useDispatch, useSelector} from "react-redux";
 import {deleteUser} from "../../redux/slice/userSlice";
 import {deleteAllVideos} from "../../redux/slice/videoSlice";
 import Notiflix from "notiflix";
+import {ModalTitle} from "../EditVideoModalContent/EditVideoModalContent.styled";
 
 export const SettingsModalContent = ({close}) => {
     const dispatch = useDispatch();
@@ -22,7 +23,7 @@ export const SettingsModalContent = ({close}) => {
     }
 
     return <>
-        <h2>{"Are you sure you want to delete user?"}</h2>
+        <ModalTitle>{"Are you sure you want to delete user?"}</ModalTitle>
         <div>
             <ButtonComponent className="delete" type="button" text="Delete" onClick={handleDeleteButtonClick}/>
             <CancelButton className="cancel" type="button" text="Cancel" onClick={handleCancelButtonClick}/>
