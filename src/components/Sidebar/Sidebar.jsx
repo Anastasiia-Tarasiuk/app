@@ -4,7 +4,7 @@ import {useEffect, useRef, useState} from "react";
 import {Message} from "../Message/Message";
 import {FormInput} from "../FormInput";
 
-export const Sidebar = ({modalSize, onClick}) => {
+export const Sidebar = ({onClick}) => {
     const [over,setOver]=useState(false);
     const [filterValue, setFilterValue] = useState("");
 
@@ -31,6 +31,6 @@ export const Sidebar = ({modalSize, onClick}) => {
         <form>
             <FormInput labelText={"Type to find your video"} onChange={e=> filterVideos(e)}/>
         </form>
-        <VideoList modalSize={modalSize} onClick={onClick} filterValue={filterValue} />
+        <VideoList onClick={onClick} filterValue={filterValue} />
     </StyledSidebar>
 }

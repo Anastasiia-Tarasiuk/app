@@ -9,7 +9,7 @@ import {SettingsModalContent} from "../../components/SettingsModalContent/Settin
 import {RenameUserButton} from "./PrivateUserPage.styled";
 import {Container} from "../../components/Container/Container";
 
-export const PrivateUserPage = ({modalSize, onClick}) => {
+export const PrivateUserPage = ({onClick}) => {
     const loggedInUserName = useSelector((state) => state.users.loggedInUser.name);
     const [showModal, setShowModal] = useState(false);
     const [showRenameContent, setShowRenameContent] = useState(true);
@@ -33,6 +33,6 @@ export const PrivateUserPage = ({modalSize, onClick}) => {
             <RenameUserButton className='renameUserButton' type="button" text="Rename user" onClick={onRenameUserButtonClick}/>
             <ButtonComponent className='deleteUserButton' type="button" text="Delete user" onClick={onDeleteUserButtonClick}/>
             </div>
-            <ModalOverlay onClick={onClick} style={modalSize} shown={showModal} close={() => setShowModal(!showModal)} content={showRenameContent ? <RenameUserModalContent close={() => setShowModal(!showModal)} /> : <SettingsModalContent close={() => setShowModal(!showModal)} />}/>
+            <ModalOverlay onClick={onClick} shown={showModal} close={() => setShowModal(!showModal)} content={showRenameContent ? <RenameUserModalContent close={() => setShowModal(!showModal)} /> : <SettingsModalContent close={() => setShowModal(!showModal)} />}/>
         </Container>
 }

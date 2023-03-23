@@ -90,11 +90,11 @@ export const SearchItem = ({ title, img, year, movieId }) => {
     }
 
     function addVideoToFavourites() {
-        const correctYouTobeLink = `https://www.youtube.com/embed/${videoKeyForYouTube}?autoplay=1&mute=0`;
+        const correctYouTubeLink = `https://www.youtube.com/embed/${videoKeyForYouTube}?autoplay=1&mute=0`;
         const thisUserVideos = allVideos.filter(video =>  video.loggedInUserId === loggedInUserId);
 
         for (const video of thisUserVideos) {
-            if (video.videoLink !== correctYouTobeLink) {
+            if (video.videoLink !== correctYouTubeLink) {
                 continue;
             } else {
                 Notiflix.Notify.failure(`This video is already in your playlist with name ${video.videoName}`);
@@ -102,7 +102,7 @@ export const SearchItem = ({ title, img, year, movieId }) => {
             }
         }
 
-        dispatch(addVideo({ loggedInUserId, videoName: `${title + ", " + year}`, videoLink: correctYouTobeLink, videoId: Date.now() }));
+        dispatch(addVideo({ loggedInUserId, videoName: `${title + ", " + year}`, videoLink: correctYouTubeLink, videoId: Date.now() }));
         Notiflix.Notify.success('Video was added successfully');
     }
 
@@ -128,7 +128,7 @@ export const SearchItem = ({ title, img, year, movieId }) => {
     function titleCut(text, limit) {
         if (text.length <= limit + 3) return text;
         
-        text = text.slice( 0, limit); 
+        text = text.slice( 0, limit);
         return text.trim() + "...";
     }
 

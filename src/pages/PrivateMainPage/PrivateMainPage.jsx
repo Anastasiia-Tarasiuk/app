@@ -11,7 +11,7 @@ import { useDispatch } from "react-redux";
 import { createRef } from "react";
 import {Container} from "../../components/Container/Container";
 
-export const PrivateMainPage = ({modalSize}) => {
+export const PrivateMainPage = () => {
     const loggedInUserName = useSelector((state) => state.users.loggedInUser.name);
     const currentVideoLink = useSelector((state) => state.videos.currentVideo).videoLink;
     const currentVideoName = useSelector((state) => state.videos.currentVideo).videoName;
@@ -59,7 +59,7 @@ export const PrivateMainPage = ({modalSize}) => {
 
     return <Container>
         <Message text={"Welcome to your playlist, " + loggedInUserName} />
-        <Sidebar modalSize={modalSize} onClick={e=> onModalShow(e)}/>
+        <Sidebar onClick={e=> onModalShow(e)}/>
         <AddVideoBar labelText={"Set the link here"} buttonText={"Add"} />
         <Player ref={ref} src={currentVideoLink} name={currentVideoName} />
         <SearchText className="text">Or <SearchLink onClick={handleSearchButtonClick}>Search</SearchLink> for new videos</SearchText>
