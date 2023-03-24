@@ -6,7 +6,7 @@ import {deleteAllVideos} from "../../redux/slice/videoSlice";
 import Notiflix from "notiflix";
 import {ModalTitle} from "../EditVideoModalContent/EditVideoModalContent.styled";
 
-export const SettingsModalContent = ({close}) => {
+export const DeleteUserModalContent = ({close}) => {
     const dispatch = useDispatch();
 
     const currentUserId = useSelector((state) => state.users.loggedInUser.id);
