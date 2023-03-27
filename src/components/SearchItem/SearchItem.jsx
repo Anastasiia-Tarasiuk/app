@@ -80,9 +80,7 @@ export const SearchItem = ({ title, img, year, movieId }) => {
         const thisUserVideos = allVideos.filter(video =>  video.loggedInUserId === loggedInUserId);
 
         for (const video of thisUserVideos) {
-            if (video.videoLink !== videoKeyForYouTube) {
-                continue;
-            } else {
+            if (video.videoLink === videoKeyForYouTube) {
                 Notiflix.Notify.failure(`This video is already in your playlist with name ${video.videoName}`);
                 return;
             }

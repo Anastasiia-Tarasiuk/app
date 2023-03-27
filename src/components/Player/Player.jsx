@@ -4,8 +4,8 @@ import { forwardRef } from "react";
 import YouTube from "react-youtube";
 
 export const Player = forwardRef((props, ref) => {
-    let width = null;
-    let height = null;
+    let width;
+    let height;
 
     if (window.innerWidth >= 768 && window.innerWidth < 1024) {
         width = 620;
