@@ -22,17 +22,26 @@ export const VideoItem = ({name, link, id, onClick}) => {
         }
     }
 
-    function isShowingModal() {
+    function isShowingModal(isShowing) {
         setShowModal(!showModal);
-        onClick();
+        onClick(isShowing);
+    }
+
+    function onOverlayClick(isShowing){
+        setShowModal(!showModal);
+        onClick(isShowing);
+    }
+    function onCloseButtonClick(isShowing){
+        setShowModal(!showModal);
+        onClick(isShowing);
     }
 
     return <li>
                 {name}
                 <div>
                     <ButtonComponent className="play" type="button" text="Play" onClick={handlePlayButtonClick}/>
-                    <VideoItemButton className="edit" type="button" text="Edit" onClick={() => isShowingModal()}/>
-                    <ModalOverlay shown={showModal} close={() => setShowModal(!showModal)} content={<EditVideoModalContent name={name} link={link} id={id} close={() => setShowModal(!showModal)} />}/>
+                    <VideoItemButton className="edit" type="button" text="Edit" onClick={() => isShowingModal(true)}/>
+                    <ModalOverlay shown={showModal} close={() => onOverlayClick(false)} content={<EditVideoModalContent name={name} link={link} id={id} close={() => onCloseButtonClick(false)} />}/>
                 </div>
             </li>
 }

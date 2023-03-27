@@ -26,36 +26,21 @@ export const PrivateMainPage = () => {
         dispatch(getCurrentVideo({}));
     }
 
-    function onModalShow() {
-        ref.current.pause();
-        // stopVideo()
+    function onModalShow(isShown) {
+        if (isShown) {
+            if (ref.current.props?.name === "YouTubePlayer") {
+                ref.current.internalPlayer.pauseVideo()
+            } else {
+                ref.current.pause();
+            }
+        } else {
+            if (ref.current.props?.name === "YouTubePlayer") {
+                ref.current.internalPlayer.playVideo()
+            } else {
+                ref.current.play();
+            }
+        }
     }
-
-//     function stopVideo() {
-//         const iframe = document.querySelector("iframe");
-//         const video = document.querySelector('video');
-        
-//         if (iframe) {
-//             console.log(iframe)
-//             // iframe.contentWindow.TSC.mediaInterface.pause(); 
-//             //
-//             // iframe.contentWindow.postMessage( '{"event":"command", "func":"pauseVideo", "args":""}', '*');
-// iframe.pauseVideo();
-     
-
-//         }
-//         if (video) {
-//             video.pause();
-//         }
-//     };
-    
-     
-
-    // function modalСlosed(e) {
-    //     // isModalShown(false);
-    //     console.log("modal", e.target);
-    //     ref.current.play();
-    // }
 
     return <Container>
         <Message text={"Welcome to your playlist, " + loggedInUserName} />

@@ -1,31 +1,36 @@
 import {Message} from "../Message/Message";
-import { PlayerWrapper, Video, YouTube } from "./Player.styled";
+import {PlayerWrapper, Video} from "./Player.styled";
 import { forwardRef } from "react";
+import YouTube from "react-youtube";
 
-// export const Player = forwardRef({src, name}) => {
+export const Player = forwardRef((props, ref) => {
+    let width = null;
+    let height = null;
 
-//     return (
-//         <PlayerWrapper>
-//             {name ? <Message text={name} /> : <Message text={"Choose video to play"} />}
-            
-//             {src && src.includes("www.youtube.com")
-//                 ? <YouTube src={src || ""} allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowFullScreen></YouTube>
-//                 : <Video controls src={src || ""} autoPlay></Video>
-//             }
-            
-//         </PlayerWrapper>
-//     )
-// }
+    if (window.innerWidth >= 768 && window.innerWidth < 1024) {
+        width = 620;
+        height = 350;
+    } else if (window.innerWidth >= 1024) {
+        width = 950;
+        height = 540;
+    } else {
+        width = 270;
+        height = 150;
+    }
 
-export const Player = forwardRef((props, ref) => (
-  
-        <PlayerWrapper>
-            {props.name ? <Message text={props.name} /> : <Message text={"Choose video to play"} />}
-            
-            {props.src && props.src.includes("www.youtube.com")
-                ? <YouTube ref={ref} src={props.src || ""} allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowFullScreen></YouTube>
-                : <Video ref={ref} controls src={props.src || ""} autoPlay></Video>
-            }
-        </PlayerWrapper>
-   
-));
+    const opts = {
+        height,
+        width,
+        playerVars: {
+            autoplay: 1,
+        },
+    };
+
+    return    <PlayerWrapper>
+        {props.name ? <Message text={props.name} /> : <Message text={"Choose video to play"} />}
+        {props.src && !props.src.includes("http")
+            ? <YouTube ref={ref} videoId={props.src || ""} opts={opts} name="YouTubePlayer"/>
+            : <Video ref={ref} controls src={props.src || ""} autoPlay></Video>
+        }
+    </PlayerWrapper>
+});

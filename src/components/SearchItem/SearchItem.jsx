@@ -22,13 +22,7 @@ export const SearchItem = ({ title, img, year, movieId }) => {
     const [src, setSrc] = useState(placeholderImage);
     const realSrc = img ? `${IMAGE_URL + img}` : defaultImage;
 
-    let correctYouTubeLink = null;
-
     const videoKeyForYouTube = useSelector((state) => state.search.searchKey);
-    
-    if (videoKeyForYouTube) {
-        correctYouTubeLink = `https://www.youtube.com/embed/${videoKeyForYouTube}?autoplay=1&mute=0`;
-    }
     
     useEffect(() => {
         const cb = (entries) => {
@@ -52,13 +46,6 @@ export const SearchItem = ({ title, img, year, movieId }) => {
         if (imageRef.current) {
             observer.observe(imageRef.current);
         }
-
-        // return () => {
-        //     if (imageRef.current) {
-        //         observer.unobserve(imageRef.current);
-        //     }
-        // }
-
     },[imageRef, realSrc])
 
     const dispatch = useDispatch();
@@ -90,11 +77,10 @@ export const SearchItem = ({ title, img, year, movieId }) => {
     }
 
     function addVideoToFavourites() {
-        const correctYouTubeLink = `https://www.youtube.com/embed/${videoKeyForYouTube}?autoplay=1&mute=0`;
         const thisUserVideos = allVideos.filter(video =>  video.loggedInUserId === loggedInUserId);
 
         for (const video of thisUserVideos) {
-            if (video.videoLink !== correctYouTubeLink) {
+            if (video.videoLink !== videoKeyForYouTube) {
                 continue;
             } else {
                 Notiflix.Notify.failure(`This video is already in your playlist with name ${video.videoName}`);
@@ -102,12 +88,12 @@ export const SearchItem = ({ title, img, year, movieId }) => {
             }
         }
 
-        dispatch(addVideo({ loggedInUserId, videoName: `${title + ", " + year}`, videoLink: correctYouTubeLink, videoId: Date.now() }));
+        dispatch(addVideo({ loggedInUserId, videoName: `${title + ", " + year}`, videoLink: videoKeyForYouTube, videoId: Date.now() }));
         Notiflix.Notify.success('Video was added successfully');
     }
 
     function renderModalContent(link) {
-        if (correctYouTubeLink) {
+        if (videoKeyForYouTube) {
             return <ModalContentWrapper>
                 <Player src={link} name={`${title + ", " + year}`} close={() => setShowModal(!showModal)} />
                 <AddButton id="addButton" aria-label="add video to favourites" type="button" text={"Add to list"} onClick={e => addVideoToFavourites(e)} />
@@ -144,7 +130,7 @@ export const SearchItem = ({ title, img, year, movieId }) => {
         <ModalOverlay
             shown={showModal}
             close={() => setShowModal(!showModal)}
-            content={renderModalContent(correctYouTubeLink)}
+            content={renderModalContent(videoKeyForYouTube)}
         />
     </MovieItem>
 }

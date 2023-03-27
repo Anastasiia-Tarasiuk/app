@@ -20,18 +20,3 @@ export const Video = styled.video`
     height: 540px;
   }
 `
-
-export const YouTube = styled.iframe`
-  width: 270px;
-  height: 150px;
-
-  @media screen and (min-width: 768px) {
-    width: 620px;
-    height: 350px;
-  }
-  
-  @media screen and (min-width: 1024px) {
-    width: 950px;
-    height: 540px;
-  }
-`
