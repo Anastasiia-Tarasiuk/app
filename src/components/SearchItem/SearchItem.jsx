@@ -14,15 +14,18 @@ import { useRef } from "react";
 
 export const SearchItem = ({ title, img, year, movieId }) => {
     const [showModal, setShowModal] = useState(false);
-    const loggedInUserId = useSelector((state) => state.users.loggedInUser.id);
     const [showTooltip, setShowTooltip] = useState(false);
+    const [src, setSrc] = useState(placeholderImage);
+
+    const loggedInUserId = useSelector((state) => state.users.loggedInUser.id);
     const allVideos = useSelector((state) => state.videos.allVideos);
+    const videoKeyForYouTube = useSelector((state) => state.search.searchKey);
 
     const imageRef = useRef(null);
-    const [src, setSrc] = useState(placeholderImage);
+
     const realSrc = img ? `${IMAGE_URL + img}` : defaultImage;
 
-    const videoKeyForYouTube = useSelector((state) => state.search.searchKey);
+    const dispatch = useDispatch();
     
     useEffect(() => {
         const cb = (entries) => {
@@ -47,8 +50,6 @@ export const SearchItem = ({ title, img, year, movieId }) => {
             observer.observe(imageRef.current);
         }
     },[imageRef, realSrc])
-
-    const dispatch = useDispatch();
 
     function onPlayButtonClick() {
         const movieLink = `${BASE_URL}/movie/${movieId}/videos?api_key=${API_KEY}&language=en-US`;
