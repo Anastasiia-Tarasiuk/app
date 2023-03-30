@@ -60,3 +60,38 @@ a:hover{
 .active {
   color: #ffc107;
 }
+
+
+@media screen and (max-width: 767px) {
+  .moveSidebarBack {
+    transition: bottom 500ms;
+    bottom: -310px;
+  }
+
+  .moveSidebarUp {
+    transition: bottom 500ms;
+    bottom: 0;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .moveSidebarBack {
+    transition: right 500ms;
+    right: -430px;
+  }
+
+  .moveSidebarUp {
+    right: 0;
+    transition: right 500ms;
+  }
+}
+
+
+
+
+
+/*.moveSidebar:hover,*/
+/*.moveSidebar:focus {*/
+/*  bottom: 0;*/
+/*  transition: bottom 500ms;*/
+/*}*/

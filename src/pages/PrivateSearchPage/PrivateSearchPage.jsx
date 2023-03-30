@@ -15,23 +15,9 @@ export const PrivateSearchPage =  () => {
     const totalPages = useSelector((state) => state.search.totalPages);
     let page = useSelector((state) => state.search.page);
 
-    // console.log(response)
-
     const refScrollUp = useRef();
 
-    // Подвійний ререндер через response 
-
-    // const [isShown, setIsShown] = useState(false);
-
     const dispatch = useDispatch();
-
-    // useEffect(() => {
-    //     if (page < totalPages) {
-    //         setIsShown(true);
-    //     } else {
-    //         setIsShown(false);
-    //     }
-    // }, [page, totalPages]);
 
     function onNextPageButtonClick() {
         scrollToTop();
