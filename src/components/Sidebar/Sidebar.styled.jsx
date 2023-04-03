@@ -3,7 +3,7 @@ import styled from "@emotion/styled";
 export const StyledSidebar = styled.div`
   padding: 10px;
   position: absolute;
-  z-index: 1;
+  z-index: 2;
   background-color: gray;
   overflow-y: scroll;
   width: 100%;

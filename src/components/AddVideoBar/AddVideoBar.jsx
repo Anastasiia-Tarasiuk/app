@@ -13,20 +13,25 @@ export const AddVideoBar = ({labelText, buttonText}) => {
     const dispatch = useDispatch();
 
     function handleButtonClick(e){
-        if (e.target.form[0].value !== '') {
-            const thisUserVideos = allVideos.filter(video =>  video.loggedInUserId === loggedInUserId);
+        const link = e.target.form[0].value
+        if (link !== '') {
+            if (link.includes('http')){
+                const thisUserVideos = allVideos.filter(video =>  video.loggedInUserId === loggedInUserId);
 
-            for (const video of thisUserVideos) {
-                if (video.videoLink !== videoLink) {
-                    continue;
-                } else {
-                    Notiflix.Notify.failure(`This video is already in your playlist with name ${video.videoName}`);
-                    return;
+                for (const video of thisUserVideos) {
+                    if (video.videoLink === videoLink) {
+                        Notiflix.Notify.failure(`This video is already in your playlist with name ${video.videoName}`);
+                        return;
+                    }
                 }
-            }
 
-            dispatch(addVideo({loggedInUserId, videoName: Date.now(), videoLink, videoId: Date.now()}));
-            Notiflix.Notify.success('Video was added successfully');
+                dispatch(addVideo({loggedInUserId, videoName: Date.now(), videoLink, videoId: Date.now()}));
+                Notiflix.Notify.success('Video was added successfully');
+            } else {
+                Notiflix.Notify.failure('Link doesn\'t include "http"');
+            }
+        } else {
+            Notiflix.Notify.failure('Link is empty');
         }
     }
 
