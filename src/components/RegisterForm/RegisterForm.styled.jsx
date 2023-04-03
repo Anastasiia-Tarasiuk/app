@@ -8,4 +8,5 @@ export const Icon = styled.svg`
 
 export const BackButton = styled(ButtonComponent)`
   position: absolute;
+  left: 20px;
 `

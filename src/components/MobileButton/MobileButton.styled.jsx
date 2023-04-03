@@ -22,7 +22,6 @@ export const IconRotate = styled.svg`
   }
 `
 export const Button = styled.button`
-  padding: 10px;   
   background-color: transparent;
   border: none;
 `

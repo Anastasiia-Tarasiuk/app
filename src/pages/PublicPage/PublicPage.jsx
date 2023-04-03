@@ -2,7 +2,7 @@ import {LoginForm} from "../../components/LoginForm";
 import {Link} from "react-router-dom";
 import { RegisterButton, RegisterWrapper } from "./PublicPage.styled";
 import { Message } from "../../components/Message/Message";
-import {Container} from "react-bootstrap";
+import {Container} from "../../components/Container/Container";
 
 export const PublicPage = () => {
     return <Container>

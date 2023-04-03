@@ -34,14 +34,10 @@ export const PrivateSearchPage =  () => {
         refScrollUp.current.scrollIntoView({ behavior: "smooth" });
     }
  
-    return (
-        <div ref={refScrollUp}>
-            <Container>
-                <Message text={"Search for videos"} />
-                <SearchVideoBar labelText={"Type here"} buttonText={"Search"} />
-                {response ? <SearchList items={response} /> : <Message text={"Type something to search for video"}/>}
-                {page < totalPages && <NextPageButton text={"Next page"} onClick={onNextPageButtonClick} />}
-            </Container>
-        </div>
-    )
+    return <Container ref={refScrollUp}>
+            <Message text={"Search for videos"} />
+            <SearchVideoBar labelText={"Type here"} buttonText={"Search"} />
+            {response ? <SearchList items={response} /> : <Message text={"Type something to search for video"}/>}
+            {page < totalPages && <NextPageButton text={"Next page"} onClick={onNextPageButtonClick} />}
+        </Container>
 }
