@@ -49,5 +49,4 @@ export const PrivateMainPage = () => {
         <Player ref={ref} src={currentVideoLink} name={currentVideoName} />
         <SearchText className="text">Or <SearchLink onClick={handleSearchButtonClick}>Search</SearchLink> for new videos</SearchText>
     </Container>
-
 }

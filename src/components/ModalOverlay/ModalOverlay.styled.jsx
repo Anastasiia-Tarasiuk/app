@@ -26,9 +26,6 @@ export const Modal = styled.div`
   padding: 20px;
   min-width: 300px;
   min-height: 200px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
   justify-content: center;
 
  @media screen and (min-width: 768px) {
