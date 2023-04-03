@@ -3,7 +3,7 @@ import styled from "@emotion/styled";
 export const StyledSidebar = styled.div`
   padding: 10px;
   position: absolute;
-  z-index: 2;
+  z-index: 1;
   background-color: gray;
   overflow-y: scroll;
   width: 100%;
@@ -12,14 +12,15 @@ export const StyledSidebar = styled.div`
   @media screen and (min-width: 768px) {
     padding: 10px;
     width: 470px;
-    top: 0;
-    height: 100%;
+    bottom: 0;
+    height: calc(100% - 41px);
   }
 
   @media screen and (min-width: 1024px) {
     width: 500px;
     right: -460px;
     transition: right 500ms;
+    bottom: 0;
     
     &:hover,
     &:focus {

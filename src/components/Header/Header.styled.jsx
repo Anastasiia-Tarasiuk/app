@@ -1,6 +1,9 @@
 import styled from "@emotion/styled";
 
 export const HeaderList = styled.ul`
+  position: fixed;
+  background-color: white;
+  z-index: 1;
   width: 100%;
   display: flex;
   font-size: 14px;
