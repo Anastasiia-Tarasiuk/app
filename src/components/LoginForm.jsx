@@ -44,8 +44,8 @@ export const LoginForm = () => {
     return <>
             <Message text="Please sing in" />
             <form onSubmit={handleFormSubmit}>
-                <FormInput labelText="Email" inputType="email" inputName="email" onChange={value => setEmail(value)} controlId="emailId" />
-                <FormInput labelText="Password" inputType="password" inputName="password"  onChange={value => setPassword(value)} controlId="passwordId"/>
+                <FormInput labelText="Email" inputType="email" inputName="email" onChange={value => setEmail(value)} controlId="emailId" aria-required="true"/>
+                <FormInput labelText="Password" inputType="password" inputName="password"  onChange={value => setPassword(value)} controlId="passwordId" aria-required="true"/>
                 <ButtonComponent className="singInButton" type="submit" text="Sign in"/>
             </form>
         </>
